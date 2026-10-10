@@ -9,6 +9,7 @@ import re
 import sys
 import urllib.error
 import urllib.request
+from urllib.parse import quote
 from html.parser import HTMLParser
 from pathlib import Path
 
@@ -392,7 +393,8 @@ def validate_plugin_projection(projection: dict) -> None:
                 fail(f"plugin {item['id']} lacks {field}")
         if not set(item.get("jobs", [])).issubset(ALLOWED_JOBS) or not item.get("jobs"):
             fail(f"plugin {item['id']} has invalid jobs")
-        if item.get("release_url") != f"{expected}/releases/tag/{item['id']}/v{item['version']}":
+        version_tag = quote('v' + item['version'], safe='')
+        if item.get("release_url") != f"{expected}/releases/tag/{item['id']}/{version_tag}":
             fail(f"plugin {item['id']} lacks the versioned release destination")
         if re.search(r"/(?:Users|Volumes)/", json.dumps(item)):
             fail(f"plugin {item['id']} contains a private path")

@@ -3,7 +3,7 @@
   "sources": {
     "compass-suite": {
       "checkout": ".",
-      "sha": "26ad17785026b29af044f8ed2f3c1faa9fbd0da4",
+      "sha": "33237f913e8f75be90c4e1a87ab2e5ceacd106a3",
       "repository": "JonathanKHobson/working-tools-site"
     },
     "critical-compass": {
