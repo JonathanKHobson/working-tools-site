@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Build one static Working Tools Site from pinned public Git revisions.
 
-The companion sources.json pins the source commits. The output directory is a
+The companion sites-sources.json pins the source commits. The output directory is a
 publication artifact, never a second editable source tree.
 """
 
@@ -34,6 +34,8 @@ RUNTIME_SUFFIXES = {
     ".jpeg", ".gif", ".webp", ".svg", ".ico", ".woff",
     ".woff2", ".ttf", ".otf", ".webm", ".mp4", ".avif",
 }
+# Historical route names remain stable after source ownership changes.
+SOURCE_REPOSITORIES = {"compass-suite": "working-tools-site"}
 DOWNLOAD_SUFFIXES = {".zip", ".skill", ".mcpb", ".pdf", ".md", ".txt"}
 TEXT_SUFFIXES = {".html", ".css", ".js", ".mjs", ".json", ".svg"}
 IGNORED_PREFIXES = (".git/", ".openai/", "docs/", "scripts/", "content/", "legal/", "snippets/", "output/", "vendor/", "site-sources/")
@@ -176,13 +178,14 @@ def main() -> None:
         sha = source["sha"]
         if not re.fullmatch(r"[0-9a-f]{40}", sha):
             raise SystemExit(f"Invalid full commit SHA for {repo}")
+        repository = SOURCE_REPOSITORIES.get(repo, repo)
         remote = git(checkout, "remote", "get-url", "origin").decode().strip()
         if remote not in (
-            f"https://github.com/JonathanKHobson/{repo}.git",
-            f"https://github.com/JonathanKHobson/{repo}",
-            f"git@github.com:JonathanKHobson/{repo}.git",
+            f"https://github.com/JonathanKHobson/{repository}.git",
+            f"https://github.com/JonathanKHobson/{repository}",
+            f"git@github.com:JonathanKHobson/{repository}.git",
         ):
-            raise SystemExit(f"Unexpected source remote for {repo}: {remote}")
+            raise SystemExit(f"Unexpected source remote for {repository}: {remote}")
         git(checkout, "cat-file", "-e", f"{sha}^{{commit}}")
         names = git(checkout, "ls-tree", "-r", "--name-only", sha).decode().splitlines()
         for name in names:
@@ -199,7 +202,7 @@ def main() -> None:
             target = OUTPUT / relative
             target.parent.mkdir(parents=True, exist_ok=True)
             target.write_bytes(blob)
-            copied.append({"source": f"{repo}@{sha}:{name}", "output": relative, "sha256": hashlib.sha256(blob).hexdigest(), "bytes": len(blob)})
+            copied.append({"source": f"{repository}@{sha}:{name}", "output": relative, "sha256": hashlib.sha256(blob).hexdigest(), "bytes": len(blob)})
             if path.suffix.lower() == ".html":
                 routes.append("/" + relative.removesuffix("index.html"))
     extra = ROOT / "site-sources" / "humanizer"
@@ -220,6 +223,7 @@ def main() -> None:
         "site_origin": args.site_origin,
         "site_project_id": args.site_project_id,
         "source_revisions": {repo: pins["sources"][repo]["sha"] for repo in REPOS},
+        "source_repositories": {repo: SOURCE_REPOSITORIES.get(repo, repo) for repo in REPOS},
         "routes": sorted(routes),
         "files": sorted(copied, key=lambda item: item["output"]),
         "excluded_source_files": sorted(excluded),

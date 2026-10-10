@@ -1,10 +1,17 @@
 """Regression checks for archive navigation in the published Site build."""
 import unittest
 
-from build_working_tools_site import LEGACY_ROUTES, legacy_redirect, rewrite
+from build_working_tools_site import SOURCE_REPOSITORIES, destination, LEGACY_ROUTES, legacy_redirect, rewrite
 
 
 class TransitionTests(unittest.TestCase):
+    def test_catalog_owner_changes_without_renaming_historical_route(self):
+        self.assertEqual(SOURCE_REPOSITORIES['compass-suite'], 'working-tools-site')
+        self.assertEqual(destination('compass-suite', 'index.html'), 'index.html')
+        html = '<a href="downloads/historical.zip">Download</a>'
+        self.assertIn('https://jonathankhobson.github.io/compass-suite/downloads/historical.zip',
+                      rewrite(html, 'compass-suite', 'index.html', None))
+
     def test_original_legacy_destination_stays_external(self):
         html = '<a href="https://jonathankhobson.github.io/critical-compass/?_legacy=1#downloads">Original</a>'
         self.assertEqual(rewrite(html, "compass-suite", "legacy/index.html", None), html)

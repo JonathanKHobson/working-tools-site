@@ -2,7 +2,7 @@
 
 ## Purpose
 
-This repository owns the Working Tools public catalog source, shared site
+`JonathanKHobson/working-tools-site` owns the maintained Working Tools public catalog source, shared site
 assets, and compatibility pages for older releases. The live storefront leads
 with the released plugin ecosystem; GitHub package pages carry installation,
 dependencies, source, and license details.
@@ -28,6 +28,13 @@ dependencies, source, and license details.
   checksums, and continuity constraints.
 - `scripts/validate_suite_site.py`: catalog, privacy, content, route, and
   structural checks.
+
+The `compass-suite` source-pin key identifies the historical root route. The
+builder resolves that key to `JonathanKHobson/working-tools-site`; it does not
+require new commits in the archived predecessor. Other legacy source pins and
+all preserved Pages/download URLs retain their names. Update the root source pin
+to a verified commit in this repository before a future build. The generated Site
+checkout remains separate; a source commit is not a deployment.
 
 ## Data flow
 
