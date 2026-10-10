@@ -66,6 +66,10 @@ class ReleaseProjectionTests(unittest.TestCase):
             released = record('reasoning-studio', '2.0.0', 'released', 'Reasoning Toolkit')
             promoted = commit([released, private, new], 'Verified successor')
             self.assertEqual(project(repository, promoted, site)['packages'][0]['version'], '2.0.0')
+            extended = record('reasoning-studio', '2.0.1+ecosystem.20261010', 'released', 'Reasoning Toolkit')
+            extended_head = commit([extended, private, new], 'Verified extended version')
+            self.assertTrue(project(repository, extended_head, site)['packages'][0]['release_url'].endswith(
+                '/v2.0.1%2Becosystem.20261010'))
             withdrawn = commit([private, new], 'Remove product')
             self.assertEqual(project(repository, withdrawn, site)['packages'], [])
 

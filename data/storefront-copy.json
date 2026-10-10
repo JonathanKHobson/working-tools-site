@@ -156,6 +156,12 @@
       "tagline": "Design interfaces people can understand and use.",
       "description": "Shape layouts, interactions, dashboards, and interface copy, then review the experience for usability and visual clarity.",
       "ownership_note": "UX Heuristics Compass is part of UX Design Studio."
+    },
+    "research-methodology-local": {
+      "family": "toolkits",
+      "tagline": "Turn research questions into checkable results.",
+      "description": "Plan a study, compare sources, analyze qualitative evidence, and write a grounded research handoff.",
+      "ownership_note": "Research Compass is an optional privately configured backend. Critical Compass belongs to Reasoning Toolkit."
     }
   },
   "excluded_ids": [

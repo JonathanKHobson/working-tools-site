@@ -5,6 +5,7 @@ import json
 import re
 import subprocess
 from pathlib import Path
+from urllib.parse import quote
 
 PUBLIC_REPOSITORY = 'https://github.com/JonathanKHobson/working-tools-plugins'
 
@@ -57,7 +58,7 @@ def project(checkout, revision, site_root):
         aliases = {'market': 'write', 'play': 'table', 'security': 'build', 'review': 'build'}
         jobs = list(dict.fromkeys(aliases.get(job, job) for job in record.get('jobs', ['build'])))
         item.update(storefront, skill_names=skills, jobs=jobs, source_revision=source,
-                    release_url=PUBLIC_REPOSITORY + '/releases/tag/' + identity + '/v' + record['version'])
+                    release_url=PUBLIC_REPOSITORY + '/releases/tag/' + identity + '/' + quote('v' + record['version'], safe=''))
         items.append(item)
     return {'schema_version': 'working-tools.plugins.v1', 'source_repository': remote,
             'source_revision': sha, 'packages': items}
