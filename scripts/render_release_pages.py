@@ -246,7 +246,7 @@ def asset_list(release: dict) -> str:
 
 def release_listing(product: dict, release: dict, current: bool) -> str:
     status = release_status(product, release, current)
-    summary = esc(release.get("summary") or "See this edition's notes and files.")
+    summary = inline_markdown(str(release.get("summary") or "See this edition's notes and files."))
     asset = download_asset(release)
     button = f'<a class="button button-primary" href="{safe_url(asset["url"])}">{download_label(asset, release["version"])}</a>' if asset else ""
     detail = f'<a class="release-text-link" href="{release_url(product, release)}">Record details and files</a>'
