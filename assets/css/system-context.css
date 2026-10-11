@@ -1,0 +1,29 @@
+/* Behind the tools uses the existing Working Tools palette and type. */
+.context-heading {width: min(1180px, 100%); padding: clamp(3rem, 6vw, 5rem) 1.5rem 3rem;}
+.context-heading h1 {max-width: 16ch; font-size: clamp(3rem, 7vw, 6rem);}
+.context-heading .context-deck {font-weight: 700; font-size: clamp(1.35rem, 2.5vw, 1.8rem); margin-top: 1.5rem;}
+.context-heading > p {max-width: 72ch;}
+.context-heading .page-actions {display: flex; flex-wrap: wrap; gap: .75rem;}
+.context-layout {display: grid; grid-template-columns: minmax(180px, 230px) minmax(0, 760px); gap: clamp(2rem, 5vw, 5rem); max-width: 1180px; margin: 0 auto; padding: 2rem 1.5rem 5rem; border-top: 1px solid var(--rule);}
+.context-toc {align-self: start; position: sticky; top: 9rem;}
+.context-toc h2 {font: 700 1rem/1.4 var(--sans); margin: 0 0 .8rem;}
+.context-toc a {display: block; padding: .65rem 0; line-height: 1.4; text-decoration: underline; text-underline-offset: .2em;}
+.context-body {min-width: 0;}
+.context-body section {scroll-margin-top: 10rem; margin-bottom: 3.5rem;}
+.context-body h2 {font-size: clamp(1.8rem, 3vw, 2.6rem); line-height: 1.12; margin: 0 0 1.3rem;}
+.context-body p, .context-body dd, .context-body li {font-size: 1.0625rem; line-height: 1.65;}
+.context-body p {margin: 0 0 1.25rem;}
+.context-body a {text-decoration: underline; text-underline-offset: .2em; overflow-wrap: anywhere;}
+.context-layers {margin: 1.7rem 0;}
+.context-layers > div {display: grid; grid-template-columns: 10rem 1fr; gap: 1.5rem; padding: 1.15rem 0; border-top: 1px solid var(--rule);}
+.context-layers > div:last-child {border-bottom: 1px solid var(--rule);}
+.context-layers dt {font-weight: 700; padding-top: .12rem;}
+.context-layers dd {margin: 0;}
+.context-resource {display: inline-block; padding: .7rem 0; font-weight: 700;}
+.context-resources {padding-left: 1.25rem;}
+.context-resources a {display: inline-block; padding: .55rem 0;}
+.context-steps {padding-left: 1.3rem;}
+.context-steps li {padding-left: .4rem; margin-bottom: 1.1rem;}
+.context-note {border-top: 1px solid var(--rule); padding-top: 1.5rem;}
+.context-note p {font-size: 1rem;}
+@media (max-width: 760px) {.context-layout {display: block; padding: 1.5rem 1rem 3rem;} .context-toc {position: static; margin-bottom: 2.5rem;} .context-toc a {padding: .7rem 0;} .context-layers > div {grid-template-columns: 1fr; gap: .35rem;} .context-body section {scroll-margin-top: 9rem;} .context-heading {padding-top: 2.5rem;}}

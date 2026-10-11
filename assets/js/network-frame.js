@@ -10,6 +10,7 @@ const frameMarkup = `
     <div class="network-nav-links" id="network-nav-menu" data-network-nav-links>
       <a class="network-nav-link" data-network-path="/" href="https://working-tools.jkylehobson.chatgpt.site/#library">Plugin catalog</a>
       <a class="network-nav-link" href="https://github.com/JonathanKHobson/working-tools-plugins">Plugin source &amp; releases</a>
+      <a class="network-nav-link" data-network-path="/behind-the-tools/" href="https://working-tools.jkylehobson.chatgpt.site/behind-the-tools/">Behind the tools</a>
       <a class="network-nav-link" data-network-path="/legacy/" href="https://working-tools.jkylehobson.chatgpt.site/legacy/">Legacy library</a>
       <a class="network-nav-link" href="https://jonathankhobson.github.io/shareables/s/understanding-ai-2026/">AI Basics</a>
       <a class="network-nav-link" href="https://jonathankhobson.github.io/what-is-an-mcp/">MCP Basics</a>

@@ -51,3 +51,7 @@ finished.
 
 The library will grow. Each tool should help you do something useful, explain
 its limits, and produce work you can review.
+
+## Behind the tools
+
+The dedicated page explains instructions, hooks, memories, chat context and agent coordination. It links to the curated instruction example, hook coverage and optional host-hook source in working-tools-plugins. Private instructions, memories, conversation contents and configuration are never page inputs.

@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <script src="../migration/forward.js"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Behind the tools | Working Tools</title>
+  <meta name="description" content="How hooks, instructions, memory, conversation context and agent coordination shape Working Tools.">
+  <link rel="icon" type="image/png" sizes="32x32" href="/compass-suite/assets/brand/working-tools-favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/compass-suite/assets/brand/working-tools-icon-180.png">
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <link rel="stylesheet" href="../assets/css/network-frame.css">
+<link rel="stylesheet" href="../network/navigation.css?v=4"><script src="../network/navigation.js?v=2" defer></script>
+  <link rel="stylesheet" href="../assets/css/system-context.css">
+</head>
+<body>
+  <noscript><p>Working Tools has a new home. <a href="https://working-tools.jkylehobson.chatgpt.site/behind-the-tools/">Open this page on Working Tools</a>.</p></noscript>
+<!-- kh-network:start -->
+<nav class="kh-network" data-kh-space="compass" aria-label="Kyle Hobson’s spaces">
+  <div class="kh-inner">
+    <a class="kh-home" href="https://jonathankhobson.github.io/portfolio/spaces/" aria-label="Kyle Hobson, all spaces home"><span class="kh-home-symbol" aria-hidden="true">↖</span>Kyle Hobson</a>
+    <span class="kh-current">Working Tools</span>
+    <details class="kh-menu"><summary>All spaces <span class="kh-caret" aria-hidden="true">⌄</span></summary>
+      <div class="kh-panel"><div class="kh-panel-top"><a href="https://jonathankhobson.github.io/portfolio/spaces/">All spaces home →</a><p class="kh-note">Work, tools, learning, and play.</p></div>
+        <div class="kh-destinations"><a class="kh-destination" href="https://jonathankhobson.github.io/portfolio/"><strong>Portfolio</strong><small>Design, research, AI &amp; learning</small></a><a class="kh-destination" href="https://jonathankhobson.github.io/compass-suite/" aria-current="location"><strong>Working Tools<em>Here</em></strong><small>Practical tools for your next task</small></a><a class="kh-destination" href="https://jonathankhobson.github.io/AI/#/"><strong>CLARE &amp; AI Glossary</strong><small>Prompting tools &amp; the AI glossary</small></a><a class="kh-destination" href="https://jonathankhobson.github.io/portfolio/workshop-studio/"><strong>Workshop Studio</strong><small>Explore the studio, then open the app</small></a><a class="kh-destination" href="https://jonathankhobson.github.io/gm/"><strong>GameMasterKyle</strong><small>Tabletop adventures &amp; creative work</small></a><a class="kh-destination" href="https://kyle-learning-to-build-with-ai.jkylehobson.chatgpt.site/"><strong>Building with AI</strong><small>The story behind the evolving work</small></a></div>
+      </div>
+    </details>
+  </div>
+</nav>
+<!-- kh-network:end -->
+
+  <a class="skip-link" href="#main">Skip to the page</a>
+  <header class="site-header">
+    <a class="brand-link" href="../"><span class="work-mark" aria-hidden="true"></span><span>Working Tools</span></a>
+    <span class="header-note">by J. Kyle Hobson</span>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-menu-toggle>Menu</button>
+    <nav class="site-nav" id="site-nav" data-site-nav aria-label="Primary navigation"><ul class="site-nav-list"><li><a href="../#work">Start with the work</a></li><li><a href="../#library">Library</a></li><li><a href="../#install">Install</a></li><li><a href="../license/">License</a></li></ul></nav>
+  </header>
+  <main id="main" class="system-context">
+    <header class="page-heading context-heading">
+      <h1>Behind the tools.</h1>
+      <p class="context-deck">The same plugin can behave differently in another setup.</p>
+      <p>A plugin supplies a workflow. Instructions, hooks, memory, conversation context and available tools shape how the agent uses it. Here is what travels with Working Tools, what stays private and how to make the setup your own.</p>
+      <div class="page-actions"><a class="button button-primary" href="#layers">See what shapes a result</a><a class="button button-quiet" href="https://github.com/JonathanKHobson/working-tools-plugins/blob/main/docs/system-context.md">Read the technical guide</a></div>
+    </header>
+    <div class="context-layout">
+      <nav class="context-toc" aria-label="On this page"><h2>On this page</h2><a href="#layers">What shapes a result</a><a href="#instructions">Working instructions</a><a href="#hooks">Hooks and review</a><a href="#memory">Memory and context</a><a href="#agents">Between agents and chats</a><a href="#try-it">Try your own setup</a></nav>
+      <div class="context-body">
+        <section id="layers" aria-labelledby="layers-title"><h2 id="layers-title">What shapes a result</h2><p>Installing a public package gives you its published files. It does not import my private workspace or reproduce every condition behind a demonstration.</p>
+          <dl class="context-layers">
+            <div><dt>Plugins and skills</dt><dd>The reusable methods, scripts, references and templates in your selected release.</dd></div>
+            <div><dt>Instructions</dt><dd>Working agreements about scope, evidence, writing, permissions and project conventions.</dd></div>
+            <div><dt>Hooks</dt><dd>Commands triggered at specific moments. Their code, registration, trust and actual execution are separate things.</dd></div>
+            <div><dt>Conversation</dt><dd>The current brief, corrections, examples, decisions and tool results available to the agent.</dd></div>
+            <div><dt>Memory</dt><dd>Saved preferences or earlier decisions, when your host supplies or retrieves them. My personal records are not included.</dd></div>
+            <div><dt>Other agents</dt><dd>Selected context and findings exchanged through bounded assignments or explicit handoffs.</dd></div>
+          </dl>
+          <p>Model versions, connected accounts, runtime dependencies and permissions also matter. <a href="https://github.com/JonathanKHobson/working-tools-plugins/blob/main/docs/compatibility.md">The compatibility record</a> distinguishes installation, representative tests and untested integrations.</p>
+        </section>
+        <section id="instructions" aria-labelledby="instructions-title"><h2 id="instructions-title">Working instructions</h2><p>My setup asks the agent to stay with a concrete task, use the existing source owner, check consequential facts and verify the requested outcome. Project instructions add local conventions. A visual task may need a rendered review; a writing task may need a final prose pass.</p><p>The public starter is a newly written example of those principles. It is not a copy or line-by-line redaction of my private instructions. Adapt it to your project and host before use.</p><p><a class="context-resource" href="https://github.com/JonathanKHobson/working-tools-plugins/blob/main/examples/AGENTS.starter.md">Read the instruction starter</a></p></section>
+        <section id="hooks" aria-labelledby="hooks-title"><h2 id="hooks-title">Hooks and review</h2><p>Published plugins already contain several hooks and optional templates. Those remain with their existing owners. A separate optional host integration shares two previously local behaviors: tracking artifact-review obligations and prompting for a scoped closeout.</p><p>A review reminder cannot judge a screenshot or prove a writing review was good. A completion mark records the caller's claim. The closeout reminder does not terminate processes or decide that a shared service belongs to this chat.</p><p>Review and configure only the hooks you want. Installing a plugin does not automatically trust its hooks, and duplicate registrations can create duplicate reminders. The integration does not activate itself.</p><ul class="context-resources"><li><a href="https://github.com/JonathanKHobson/working-tools-plugins/blob/main/docs/hook-coverage.md">See hook coverage and existing owners</a></li><li><a href="https://github.com/JonathanKHobson/working-tools-plugins/tree/main/integrations/codex-host-hooks">Inspect the optional host-hook source and setup</a></li><li><a href="https://github.com/JonathanKHobson/working-tools-plugins/releases/tag/codex-host-hooks/v0.1.0">Get the reviewed host-hook release</a></li></ul></section>
+        <section id="memory" aria-labelledby="memory-title"><h2 id="memory-title">Memory and context stay personal</h2><p>In my environment, relevant preferences and earlier decisions can be supplied as context or retrieved when needed. That can reduce repetition, but an old note can also be wrong. Current files and live evidence still need checking.</p><p>My memory contents, private conversations, client records and full custom instructions are not part of these releases. You bring your own authorized context. Optional library integrations need your own data and configuration.</p><p>Even with memory off, the current conversation can influence the answer. A new chat or a shortened history may lack a crucial decision. A concise handoff should name the goal, accepted constraints, source and unresolved question.</p></section>
+        <section id="agents" aria-labelledby="agents-title"><h2 id="agents-title">Between agents and chats</h2><p>A lead can assign a worker a narrow question and selected context, then inspect the returned evidence. Workers may receive different amounts of history. Separate chats communicate through explicit tools or maintained handoffs; they do not automatically share everything.</p><p>In this workflow, a useful lesson changes future behavior when it is deliberately retained or used to update a maintained method. Exchanging messages does not itself retrain the model or update every chat. Several agents agreeing can still mean they shared the same incomplete evidence.</p><p>Each assignment needs an owner, inputs, expected output and stop condition. Sending material to another provider is a separate data-sharing decision.</p></section>
+        <section id="try-it" aria-labelledby="try-title"><h2 id="try-title">Try your own setup</h2><ol class="context-steps"><li><strong>Start with one package.</strong> Record the release, host and model. Follow its installation guide.</li><li><strong>Use a fictional task with explicit facts.</strong> A fresh chat may still receive global instructions or memory. Inspect your settings.</li><li><strong>Check what actually ran.</strong> Identify the selected skill, tools and hook state. Review the output against your acceptance criteria.</li><li><strong>Add one influence at a time.</strong> Compare the same task before adding optional hooks, private sources or extra agents.</li></ol><p>For help, share the version, sanitized task, expected result and observed result. Keep private instructions, memories, credentials and raw account logs out of a public issue.</p><p><a class="context-resource" href="https://github.com/JonathanKHobson/working-tools-plugins/blob/main/SUPPORT.md">Read the support guide</a></p></section>
+        <aside class="context-note" aria-label="Sources and scope"><p><strong>Reviewed October 11, 2026.</strong> This is a curated explanation of the inspected setup, not a promise of identical results or proof that every configured hook recently fired.</p><p>Host references: <a href="https://learn.chatgpt.com/docs/agent-configuration/agents-md">instructions</a>, <a href="https://learn.chatgpt.com/docs/hooks">hooks</a>, <a href="https://learn.chatgpt.com/docs/customization/memories">memories</a> and <a href="https://learn.chatgpt.com/docs/agent-configuration/subagents">subagents</a>.</p></aside>
+      </div>
+    </div>
+  </main>
+  <footer class="site-footer"><div class="site-footer-inner"><div><p class="eyebrow">Working Tools</p><p class="footer-statement">One bounded tool per job, with the boundary visible.</p></div><nav class="footer-group" aria-label="Explore"><h2>Explore</h2><a href="../">Home</a><a href="../#library">Tool library</a></nav><nav class="footer-group" aria-label="Trust and legal"><h2>Trust &amp; legal</h2><a href="../behind-the-tools/">Behind the tools</a><a href="../license/">License &amp; attribution</a><a href="https://github.com/JonathanKHobson/working-tools-site">Website source</a></nav><p class="footer-legal">© 2026 Jonathan Kyle Hobson. Code AGPL-3.0-only; docs, prompts, skills, and methodology CC BY-SA 4.0 unless otherwise noted.</p></div></footer>
+  <script type="module" src="../assets/js/network-frame.js"></script>
+  <script type="module" src="../assets/js/collection.js"></script>
+<!-- kh-footer:start -->
+<nav class="kh-footer" data-kh-space="compass" aria-label="Explore Kyle Hobson’s other spaces">
+  <div class="kh-footer-inner"><a class="kh-footer-home" href="https://jonathankhobson.github.io/portfolio/spaces/">Kyle Hobson <span>All spaces ↗</span></a>
+  <div class="kh-footer-links"><a href="https://jonathankhobson.github.io/portfolio/">Portfolio</a><a href="https://jonathankhobson.github.io/compass-suite/" aria-current="location">Working Tools</a><a href="https://jonathankhobson.github.io/AI/#/">CLARE &amp; AI Glossary</a><a href="https://jonathankhobson.github.io/portfolio/workshop-studio/">Workshop Studio</a><a href="https://jonathankhobson.github.io/gm/">GameMasterKyle</a><a href="https://kyle-learning-to-build-with-ai.jkylehobson.chatgpt.site/">Building with AI</a></div></div>
+</nav>
+<!-- kh-footer:end -->
+</body>
+</html>

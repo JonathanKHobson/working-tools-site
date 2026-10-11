@@ -9,6 +9,9 @@ dependencies, source, and license details.
 
 ## Entrypoints
 
+- `behind-the-tools/index.html`: public context, privacy and host-hook explanation.
+- `assets/css/system-context.css`: page-scoped layout using the shared palette and typography.
+
 - `index.html`: main catalog page, task filters, and storefront calls to action.
 - `assets/js/catalog.js`: loads the released package projection and current
   standalone public guides, groups products, and renders accessible filters.
