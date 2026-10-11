@@ -10,6 +10,11 @@ const JOB_LABELS = {
 };
 
 const HIDDEN_PERSONAL_OR_PRIVATE_PACKAGES = new Set(["discord", "oppia-research-compass"]);
+const GUIDE_HISTORY_IDS = {
+  "participatory-defense-field-guide": ["participatory-defense-assistant", "grounded-legal-research"],
+  "understanding-ai-2026": ["understanding-ai-2026"],
+  "mcp-basics": ["safe-install-review"]
+};
 
 function installationAsset(release) {
   if (!release || release.distribution_status !== "available" || !["stable", "release"].includes(release.channel)) return null;
@@ -61,7 +66,7 @@ const CATALOG_GROUPS = [
 ];
 
 function groupFor(item) {
-  if (item.kind === "Installable plugin") return item.family || "workflows";
+  if (item.kind === "Installable plugin" || item.kind === "Optional integration") return item.family || "workflows";
   return "resources";
 }
 
@@ -141,7 +146,7 @@ function createRow(item, accessLabels) {
   row.dataset.access = item.access;
 
   const meta = element("div", "library-meta");
-  const statusText = item.kind === "Installable plugin" ? "Available now" : accessLabels[item.access];
+  const statusText = item.kind === "Installable plugin" || item.kind === "Optional integration" ? "Available now" : accessLabels[item.access];
   const status = element("span", "status-label", statusText);
   status.dataset.access = item.access;
   meta.append(status);
@@ -162,12 +167,15 @@ function createRow(item, accessLabels) {
     link.href = exactDownload?.url || item.release_url || item.href;
     side.append(link);
   }
-  if (item.historyProduct) {
-    const count = item.historyProduct.releases.length;
-    const history = element("a", "library-history-link", `Details and all ${count} ${count === 1 ? "release" : "releases"}`);
-    history.href = `plugins/${encodeURIComponent(item.id)}/`;
+  (item.historyProducts || []).forEach((product) => {
+    const count = product.releases?.length || 0;
+    const label = item.kind === "Installable plugin" || item.kind === "Optional integration"
+      ? `Details and ${count} ${count === 1 ? "history record" : "history records"}`
+      : `${product.name}: files and history`;
+    const history = element("a", "library-history-link", label);
+    history.href = `plugins/${encodeURIComponent(product.id)}/`;
     side.append(history);
-  }
+  });
 
   if (item.description || item.requirements?.length || item.edition || item.license) side.append(createPackageDetails(item));
   if (item.skills?.length) side.append(createSkillDetails(item.skills));
@@ -237,9 +245,12 @@ export async function startCatalog() {
       .filter((p) => !HIDDEN_PERSONAL_OR_PRIVATE_PACKAGES.has(p.id))
       .map((p) => {
         const historyProduct = historyById.get(p.id);
-        return {...p, kind: "Installable plugin", access: "public-download", href: `https://github.com/JonathanKHobson/working-tools-plugins/tree/main/plugins/${p.id}`, action: "Open current release", skills: p.skill_names, status: "Released", historyProduct, currentRelease: currentRelease(historyProduct)};
+        const integration = historyProduct?.kind === "integration";
+        return {...p, kind: integration ? "Optional integration" : "Installable plugin", access: "public-download", href: integration ? `https://github.com/JonathanKHobson/working-tools-plugins/tree/main/integrations/${p.id}` : `https://github.com/JonathanKHobson/working-tools-plugins/tree/main/plugins/${p.id}`, action: "Open current release", skills: p.skill_names, status: "Released", historyProducts: historyProduct ? [historyProduct] : [], currentRelease: currentRelease(historyProduct)};
       });
-    const currentResources = library.items.filter((item) => ["participatory-defense-field-guide", "understanding-ai-2026", "mcp-basics"].includes(item.id));
+    const currentResources = library.items
+      .filter((item) => Object.hasOwn(GUIDE_HISTORY_IDS, item.id))
+      .map((item) => ({...item, historyProducts: GUIDE_HISTORY_IDS[item.id].map((id) => historyById.get(id)).filter(Boolean)}));
     const items = [...plugins, ...currentResources];
 
     render = () => {

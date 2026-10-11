@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 import html
 import json
 import re
@@ -42,8 +43,33 @@ def product_url(product: dict) -> str:
     return f"/plugins/{product['id']}/"
 
 
+def release_slug(release: dict) -> str:
+    version = release.get("version")
+    if isinstance(version, str) and VERSION.fullmatch(version):
+        return version
+    commit = str(release.get("source_commit") or "")
+    if re.fullmatch(r"[0-9a-f]{40}", commit):
+        return "revision-" + commit[:12]
+    return "record-" + hashlib.sha256(str(release["release_key"]).encode()).hexdigest()[:12]
+
+
+def release_label(release: dict) -> str:
+    version = release.get("version")
+    if version:
+        return f"v{version}" if release.get("version_scheme") in (None, "semver") else str(version)
+    commit = str(release.get("source_commit") or "")
+    return "Source revision " + commit[:7] if re.fullmatch(r"[0-9a-f]{40}", commit) else "Unversioned record"
+
+
 def release_url(product: dict, release: dict) -> str:
-    return product_url(product) + "releases/" + quote(release["version"], safe="") + "/"
+    return product_url(product) + "releases/" + quote(release_slug(release), safe="") + "/"
+
+
+def public_page_url(product: dict) -> str:
+    direct = product.get("page_url")
+    if not direct:
+        direct = next((release.get("page_url") for release in product.get("releases", []) if release.get("page_url")), None)
+    return safe_url(direct)
 
 
 def repository_url(product: dict) -> str:
@@ -58,12 +84,43 @@ def download_asset(release: dict) -> dict | None:
         return None
     assets = release.get("assets") or []
     for asset in assets:
-        if asset.get("role") in ("installation", "recommended", "primary", "installable", "plugin-zip") and safe_url(asset.get("url")):
+        if asset.get("role") in ("installation", "recommended", "primary", "installable", "plugin-zip") and verified_public_asset(release, asset):
             return asset
     for asset in assets:
-        if asset.get("name") == f"{release.get('product_id')}-{release.get('version')}.zip" and safe_url(asset.get("url")):
+        if asset.get("name") == f"{release.get('product_id')}-{release.get('version')}.zip" and verified_public_asset(release, asset):
             return asset
     return None
+
+
+def verified_public_asset(release: dict, asset: dict) -> bool:
+    """A listed file is a download only when its public bytes are verified."""
+    if release.get("distribution_status") != "available" or not safe_url(asset.get("url")):
+        return False
+    level = asset.get("verification")
+    return level is None or level == "public-download-bytes"
+
+
+def has_verified_public_files(release: dict) -> bool:
+    return any(verified_public_asset(release, asset) for asset in release.get("assets") or [])
+
+
+def release_status(product: dict, release: dict, current: bool) -> str:
+    if current:
+        return "Current integration package" if product.get("kind") == "integration" else "Current plugin edition"
+    status = release.get("distribution_status")
+    if status == "page-only":
+        return "Public guide page"
+    if status == "available" and product.get("kind") == "external":
+        return "Verified public files" if has_verified_public_files(release) else "File record, download unverified"
+    if status == "unavailable" and isinstance(release.get("verification"), dict) and release["verification"].get("reason"):
+        return "Source verification exception"
+    return str(status or "Recorded history").replace("-", " ").capitalize()
+
+
+def unverified_file_message(release: dict, *, for_file: bool = True) -> str:
+    if release.get("distribution_status") == "unavailable" and safe_url(release.get("release_url")):
+        return "Not offered here as a verified download. The original release may still host this file."
+    return "A public download has not been verified for this file." if for_file else "No public download is confirmed for this record."
 
 
 def download_label(asset: dict, version: str) -> str:
@@ -159,9 +216,9 @@ def shell(title: str, description: str, body: str, canonical: str) -> str:
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
-  <header class="release-header"><a class="release-wordmark" href="/">Working Tools</a><a href="/#library">Browse the library</a></header>
+  <header class="release-header"><a class="release-wordmark" href="/">Working Tools</a><nav aria-label="Release navigation"><a href="/releases/">All products</a><a href="/#library">Browse the library</a></nav></header>
   <main id="main" class="release-page">{body}</main>
-  <footer class="release-footer"><a href="/">Working Tools</a><a href="/legacy/">Legacy library</a><a href="https://github.com/JonathanKHobson/working-tools-plugins">Public source</a></footer>
+  <footer class="release-footer"><a href="/">Working Tools</a><a href="/releases/">All products</a><a href="/legacy/">Legacy library</a><a href="https://github.com/JonathanKHobson/working-tools-plugins">Public source</a></footer>
 </body>
 </html>
 '''
@@ -174,31 +231,36 @@ def asset_list(release: dict) -> str:
     rows = []
     for asset in assets:
         url = safe_url(asset.get("url"))
+        downloadable = verified_public_asset(release, asset)
         name = esc(asset.get("name") or "Download file")
-        name_html = f'<a href="{url}">{name}</a>' if url else name
+        name_html = f'<a href="{url}">{name}</a>' if downloadable and url else name
         role = esc(str(asset.get("role") or "file").replace("-", " ").title())
         size = asset.get("size")
         size_html = f" · {int(size):,} bytes" if isinstance(size, int) and size >= 0 else ""
         digest = str(asset.get("sha256") or "").removeprefix("sha256:")
         checksum = f'<code>SHA-256 {esc(digest)}</code>' if re.fullmatch(r"[0-9a-fA-F]{64}", digest) else ""
-        rows.append(f'<li><span class="release-asset-name">{name_html}</span><span class="release-muted">{role}{size_html}</span>{checksum}</li>')
+        availability = "" if downloadable else f'<span class="release-muted">{unverified_file_message(release)}</span>'
+        rows.append(f'<li><span class="release-asset-name">{name_html}</span><span class="release-muted">{role}{size_html}</span>{checksum}{availability}</li>')
     return '<ul class="release-assets">' + "".join(rows) + "</ul>"
 
 
 def release_listing(product: dict, release: dict, current: bool) -> str:
-    status = "Current edition" if current else str(release.get("distribution_status") or "Historical edition").replace("-", " ").capitalize()
+    status = release_status(product, release, current)
     summary = esc(release.get("summary") or "See this edition's notes and files.")
     asset = download_asset(release)
     button = f'<a class="button button-primary" href="{safe_url(asset["url"])}">{download_label(asset, release["version"])}</a>' if asset else ""
-    detail = f'<a class="release-text-link" href="{release_url(product, release)}">Version details and files</a>'
-    return f'''<li class="release-history-row"><div><span class="release-status">{esc(status)}</span><h3>v{esc(release['version'])}</h3><p class="release-meta">{date(release.get('published_at'))} · {esc(release.get('channel') or 'Release')}</p><p>{summary}</p></div><div class="release-actions">{button}{detail}</div></li>'''
+    detail = f'<a class="release-text-link" href="{release_url(product, release)}">Record details and files</a>'
+    published = f"{date(release['published_at'])} · " if release.get("published_at") else ""
+    return f'''<li class="release-history-row"><div><span class="release-status">{esc(status)}</span><h3>{esc(release_label(release))}</h3><p class="release-meta">{published}{esc(release.get('channel') or product.get('channel') or 'Source record')}</p><p>{summary}</p></div><div class="release-actions">{button}{detail}</div></li>'''
 
 
 def render_product(product: dict) -> str:
     releases = product.get("releases") or []
     current_key = product.get("current_release_key")
     current = next((item for item in releases if item.get("release_key") == current_key), None)
-    note = '<p class="release-muted">No current downloadable edition is listed. Historical records remain below.</p>'
+    lifecycle = str(product.get("lifecycle") or "")
+    page_url = public_page_url(product)
+    note = '<p class="release-muted">No current edition is selected. The recorded history is below.</p>'
     if current:
         asset = download_asset(current)
         note = f'<p class="release-lede">Current edition: v{esc(current["version"])}. {esc(current.get("summary") or "Open the version details for the files and notes.")}</p>'
@@ -206,30 +268,60 @@ def render_product(product: dict) -> str:
             note += f'<div class="release-actions"><a class="button button-primary" href="{safe_url(asset["url"])}">{download_label(asset, current["version"])}</a><a class="release-text-link" href="{release_url(product, current)}">View current edition details</a></div>'
         else:
             note += '<p class="release-muted">This edition has no recommended download.</p>'
+    elif lifecycle.startswith("active-guide"):
+        note = '<p class="release-lede">This guide is available on its maintained public page. Its related files and source history are listed below.</p>'
+        actions = [f'<a class="button button-primary" href="{page_url}">Open the guide</a>'] if page_url else []
+        if lifecycle == "active-guide-download" and releases and releases[0].get("distribution_status") == "available":
+            for asset in releases[0].get("assets") or []:
+                url = safe_url(asset.get("url"))
+                if url and verified_public_asset(releases[0], asset) and asset.get("verification") == "public-download-bytes":
+                    actions.append(f'<a class="release-text-link" href="{url}">Download {esc(asset.get("name") or "skill file")}</a>')
+        actions.append('<a class="release-text-link" href="#history-title">Browse recorded history</a>')
+        note += '<div class="release-actions">' + "".join(actions) + "</div>"
+    elif lifecycle == "frozen-legacy":
+        note = '<p class="release-lede">This is a preserved earlier resource. Existing public files and source records remain available below where verified.</p><p><a href="#history-title">Browse preserved history</a></p>'
     compatibility = prose(product.get("compatibility")) if product.get("compatibility") else '<p class="release-muted">Check the package source for host requirements.</p>'
-    upgrade = prose(product.get("upgrade_guidance")) if product.get("upgrade_guidance") else '<p class="release-muted">Read the version notes before replacing an installed edition.</p>'
+    upgrade = prose(product.get("upgrade_guidance")) if product.get("upgrade_guidance") else '<p class="release-muted">No product-wide upgrade guidance is recorded.</p>'
     rows = "".join(release_listing(product, item, item.get("release_key") == current_key) for item in releases)
     repository = repository_url(product)
     source_link = f'<p><a href="{repository}">View product source and instructions</a></p>' if repository else ""
-    is_plugin = "plugin" in str(product.get("kind") or "plugin").lower()
-    use_title = "Install and upgrade" if is_plugin else "Use this resource"
-    use_intro = ('Download the exact edition you need. Follow the <a href="https://github.com/JonathanKHobson/working-tools-plugins/blob/main/docs/install.md">installation guide</a> for your host.' if is_plugin else 'Open the edition that matches your work. The original source and notes explain how to use it.')
-    body = f'''<nav class="release-breadcrumb" aria-label="Breadcrumb"><a href="/">Library</a><span aria-hidden="true">/</span><span>{esc(product['name'])}</span></nav>
-<section class="release-intro"><p class="release-kicker">{esc(product.get('kind') or 'Plugin')} · Release history</p><h1>{esc(product['name'])}</h1>{note}</section>
-<div class="release-columns"><section aria-labelledby="install-title"><h2 id="install-title">{use_title}</h2><p>{use_intro}</p>{source_link}<h3>Compatibility</h3>{compatibility}<h3>Upgrade guidance</h3>{upgrade}</section><section aria-labelledby="history-title"><h2 id="history-title">All releases</h2><p class="release-muted">{len(releases)} published {('edition' if len(releases) == 1 else 'editions')}, newest first. Older editions remain available for reproducibility.</p><ol class="release-history">{rows}</ol></section></div>'''
-    return shell(product["name"], f"Versions and downloads for {product['name']}.", body, product_url(product))
+    kind = str(product.get("kind") or "plugin")
+    if kind == "integration":
+        use_title = "Set up this integration"
+        use_intro = "Download the fixed package, then follow its host-specific setup and trust instructions before enabling it. Check the compatibility and upgrade notes below."
+    elif kind == "plugin":
+        use_title = "Install and upgrade"
+        use_intro = 'Download the exact edition you need. Follow the <a href="https://github.com/JonathanKHobson/working-tools-plugins/blob/main/docs/install.md">installation guide</a> for your host.'
+    else:
+        use_title = "Use this resource"
+        use_intro = "Open the edition that matches your work. The original source and notes explain how to use it."
+    body = f'''<nav class="release-breadcrumb" aria-label="Breadcrumb"><a href="/">Library</a><span aria-hidden="true">/</span><a href="/releases/">All products</a><span aria-hidden="true">/</span><span>{esc(product['name'])}</span></nav>
+<section class="release-intro"><p class="release-kicker">{esc(product.get('product_kind') or product.get('kind') or 'Resource')} · Availability and history</p><h1>{esc(product['name'])}</h1>{note}</section>
+<div class="release-columns"><section aria-labelledby="install-title"><h2 id="install-title">{use_title}</h2><p>{use_intro}</p>{source_link}<h3>Compatibility</h3>{compatibility}<h3>Upgrade guidance</h3>{upgrade}</section><section aria-labelledby="history-title"><h2 id="history-title">Recorded history</h2><p class="release-muted">{len(releases)} {('record' if len(releases) == 1 else 'records')}. A record may describe a public release, a page, or preserved files.</p><ol class="release-history">{rows}</ol></section></div>'''
+    return shell(product["name"], f"Availability, files and history for {product['name']}.", body, product_url(product))
 
 
 def render_release(product: dict, release: dict) -> str:
     current = release.get("release_key") == product.get("current_release_key")
-    status = "Current edition" if current else str(release.get("distribution_status") or "Historical edition").replace("-", " ").capitalize()
+    status = release_status(product, release, current)
     recommended = download_asset(release)
-    action = f'<a class="button button-primary" href="{safe_url(recommended["url"])}">{download_label(recommended, release["version"])}</a>' if recommended else '<p class="release-muted">No recommended download for this edition.</p>'
+    page = safe_url(release.get("page_url")) or public_page_url(product)
+    if recommended:
+        action = f'<a class="button button-primary" href="{safe_url(recommended["url"])}">{download_label(recommended, release["version"])}</a>'
+    elif page and str(product.get("lifecycle") or "").startswith("active-guide"):
+        action = f'<a class="button button-primary" href="{page}">Open the guide</a>'
+    elif has_verified_public_files(release):
+        action = '<p class="release-muted">Verified files for this record are listed below.</p>'
+    else:
+        action = f'<p class="release-muted">{unverified_file_message(release, for_file=False)}</p>'
     source = safe_url(release.get("release_url"))
     github = f'<a class="release-text-link" href="{source}">Open the original release</a>' if source else ""
-    notes = prose(release.get("notes") or release.get("summary"))
+    notes = prose(release.get("notes") or release.get("release_notes") or release.get("summary"))
     provenance = esc(release.get("notes_provenance"))
     provenance_html = f'<p class="release-muted">Notes source: {provenance}</p>' if provenance else ""
+    verification = release.get("verification") or {}
+    reason = verification.get("reason") if isinstance(verification, dict) else None
+    reason_html = f'<p class="release-verification-reason"><strong>Verification note:</strong> {esc(reason)}</p>' if reason else ""
     compatibility = prose(release.get("compatibility") or product.get("compatibility"))
     upgrade = prose(release.get("upgrade_guidance") or product.get("upgrade_guidance"))
     members = release.get("bundle_members") or []
@@ -237,10 +329,50 @@ def render_release(product: dict, release: dict) -> str:
     members_html = '<h3>Included products</h3><ul class="release-members">' + "".join(f"<li>{esc(member)}</li>" for member in member_names if member) + "</ul>" if member_names else ""
     source_sha = str(release.get("source_commit") or "")
     source_html = f'<p class="release-muted">Source commit: <code>{esc(source_sha)}</code></p>' if re.fullmatch(r"[0-9a-f]{40}", source_sha) else ""
-    body = f'''<nav class="release-breadcrumb" aria-label="Breadcrumb"><a href="/">Library</a><span aria-hidden="true">/</span><a href="{product_url(product)}">{esc(product['name'])}</a><span aria-hidden="true">/</span><span>v{esc(release['version'])}</span></nav>
-<section class="release-intro"><p class="release-kicker">{esc(status)} · {esc(release.get('channel') or 'Release')} · {date(release.get('published_at'))}</p><h1>{esc(product['name'])}<span class="release-version">v{esc(release['version'])}</span></h1><p class="release-lede">{esc(release.get('summary') or 'Read the notes and choose an exact file below.')}</p><div class="release-actions">{action}{github}</div></section>
-<div class="release-columns"><section aria-labelledby="notes-title"><h2 id="notes-title">Release notes</h2>{notes}{provenance_html}{members_html}<h3>Compatibility</h3>{compatibility}<h3>Upgrade guidance</h3>{upgrade}</section><section aria-labelledby="files-title"><h2 id="files-title">Files and checksums</h2><p>Each link points to this edition's fixed release asset. Match the SHA-256 value after downloading when one is supplied.</p>{asset_list(release)}{source_html}<p><a href="{product_url(product)}">See the complete release history</a></p></section></div>'''
-    return shell(f"{product['name']} v{release['version']}", str(release.get("summary") or "Version details and downloads."), body, release_url(product, release))
+    published = f" · {date(release['published_at'])}" if release.get("published_at") else ""
+    file_intro = ("These links point to fixed public files. Match a supplied SHA-256 value after downloading."
+                  if has_verified_public_files(release) else
+                  "These files are recorded for context. " + unverified_file_message(release, for_file=False))
+    body = f'''<nav class="release-breadcrumb" aria-label="Breadcrumb"><a href="/">Library</a><span aria-hidden="true">/</span><a href="/releases/">All products</a><span aria-hidden="true">/</span><a href="{product_url(product)}">{esc(product['name'])}</a><span aria-hidden="true">/</span><span>{esc(release_label(release))}</span></nav>
+<section class="release-intro"><p class="release-kicker">{esc(status)} · {esc(release.get('channel') or product.get('channel') or 'Source record')}{published}</p><h1>{esc(product['name'])}<span class="release-version">{esc(release_label(release))}</span></h1><p class="release-lede">{esc(release.get('summary') or 'Inspect the source record and files below.')}</p><div class="release-actions">{action}{github}</div></section>
+<div class="release-columns"><section aria-labelledby="notes-title"><h2 id="notes-title">Record notes</h2>{notes}{provenance_html}{reason_html}{members_html}<h3>Compatibility</h3>{compatibility}<h3>Upgrade guidance</h3>{upgrade}</section><section aria-labelledby="files-title"><h2 id="files-title">Files and checksums</h2><p>{file_intro}</p>{asset_list(release)}{source_html}<p><a href="{product_url(product)}">See this product's recorded history</a></p></section></div>'''
+    return shell(f"{product['name']} {release_label(release)}", str(release.get("summary") or "Record details and files."), body, release_url(product, release))
+
+
+def directory_group(product: dict) -> str:
+    lifecycle = str(product.get("lifecycle") or "")
+    if lifecycle.startswith("active-guide"):
+        return "guides"
+    if lifecycle == "frozen-legacy" or product.get("kind") == "external":
+        return "legacy"
+    return "plugins"
+
+
+def render_directory(products: list[dict]) -> str:
+    groups = (
+        ("plugins", "Current plugins and integrations", "Installable public editions and optional host integrations with fixed release files."),
+        ("guides", "Active guides", "Public pages and related skills with their own source history."),
+        ("legacy", "Preserved resources", "Earlier products kept discoverable with their original files and records."),
+    )
+    sections = []
+    for key, title, description in groups:
+        items = sorted((product for product in products if directory_group(product) == key), key=lambda item: item["name"].casefold())
+        rows = []
+        for product in items:
+            count = len(product.get("releases") or [])
+            current = next((release for release in product.get("releases", []) if release.get("release_key") == product.get("current_release_key")), None)
+            if current:
+                state = "Current " + release_label(current)
+            elif key == "guides":
+                state = "Public guide"
+            else:
+                state = "Preserved history"
+            rows.append(f'<li><a href="{product_url(product)}">{esc(product["name"])}</a><span>{esc(state)} · {count} {("record" if count == 1 else "records")}</span></li>')
+        sections.append(f'<section class="release-directory-group" aria-labelledby="group-{key}"><h2 id="group-{key}">{title}<span>{len(items)}</span></h2><p>{description}</p><ul class="release-directory-list">{"".join(rows)}</ul></section>')
+    body = f'''<nav class="release-breadcrumb" aria-label="Breadcrumb"><a href="/">Library</a><span aria-hidden="true">/</span><span>All products</span></nav>
+<section class="release-intro"><h1>Every tool has a history.</h1><p class="release-lede">Browse current plugins, active guides, and preserved resources. Each product page distinguishes a recommended edition from earlier files and source records.</p><p class="release-muted">{len(products)} public products in this directory.</p></section>
+<div class="release-directory">{"".join(sections)}</div>'''
+    return shell("All products and release history", "Browse current plugins, active guides and preserved Working Tools resources.", body, "/releases/")
 
 
 def render(history_path: Path = HISTORY, output: Path = PRODUCTS) -> tuple[int, int]:
@@ -263,15 +395,17 @@ def render(history_path: Path = HISTORY, output: Path = PRODUCTS) -> tuple[int, 
         seen_ids.add(identity)
         releases = product.get("releases") or []
         expected.add(output / identity / "index.html")
-        seen_versions = set()
+        seen_slugs = set()
         for release in releases:
-            version = release.get("version")
-            if not isinstance(version, str) or not VERSION.fullmatch(version):
-                raise ValueError(f"Invalid release version: {version!r}")
-            if version in seen_versions:
-                raise ValueError(f"Duplicate release version: {identity}/{version}")
-            seen_versions.add(version)
-            expected.add(output / identity / "releases" / version / "index.html")
+            if not isinstance(release.get("release_key"), str) or not release["release_key"]:
+                raise ValueError(f"Missing release key for {identity}")
+            slug = release_slug(release)
+            if not VERSION.fullmatch(slug):
+                raise ValueError(f"Invalid release route: {identity}/{slug}")
+            if slug in seen_slugs:
+                raise ValueError(f"Duplicate release route: {identity}/{slug}")
+            seen_slugs.add(slug)
+            expected.add(output / identity / "releases" / slug / "index.html")
 
     page_count = 0
     for product in products:
@@ -282,8 +416,7 @@ def render(history_path: Path = HISTORY, output: Path = PRODUCTS) -> tuple[int, 
         (product_dir / "index.html").write_text(render_product(product))
         page_count += 1
         for release in releases:
-            version = release["version"]
-            release_dir = product_dir / "releases" / version
+            release_dir = product_dir / "releases" / release_slug(release)
             release_dir.mkdir(parents=True, exist_ok=True)
             (release_dir / "index.html").write_text(render_release(product, release))
             page_count += 1
@@ -296,6 +429,10 @@ def render(history_path: Path = HISTORY, output: Path = PRODUCTS) -> tuple[int, 
                         parent.rmdir()
                     except OSError:
                         pass
+    directory = output.parent / "releases"
+    directory.mkdir(parents=True, exist_ok=True)
+    (directory / "index.html").write_text(render_directory(products))
+    page_count += 1
     return len(products), page_count
 
 

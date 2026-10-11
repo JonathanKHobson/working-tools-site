@@ -211,19 +211,22 @@ def main() -> None:
             copied.append({"source": f"{repository}@{sha}:{name}", "output": relative, "sha256": hashlib.sha256(blob).hexdigest(), "bytes": len(blob)})
             if path.suffix.lower() == ".html":
                 routes.append("/" + relative.removesuffix("index.html"))
-    extra = ROOT / "site-sources" / "humanizer"
-    if extra.exists():
-        for path in extra.rglob("*"):
-            if not path.is_file() or path.suffix == ".md": continue
-            relative = "humanizer/" + path.relative_to(extra).as_posix()
-            target = OUTPUT / relative
-            target.parent.mkdir(parents=True, exist_ok=True)
-            blob = path.read_bytes()
-            if path.suffix == ".html":
-                blob = legacy_redirect()
-            target.write_bytes(blob)
-            copied.append({"source": "humanizer-public-projection:" + path.relative_to(extra).as_posix(), "output": relative, "sha256": hashlib.sha256(blob).hexdigest(), "bytes": len(blob)})
-            if path.suffix == ".html": routes.append("/" + relative.removesuffix("index.html"))
+    # Preserve Humanizer downloads from the same exact maintained source commit.
+    root_sha = pins["sources"]["compass-suite"]["sha"]
+    root_checkout = (ROOT / pins["sources"]["compass-suite"]["checkout"]).resolve()
+    extra_prefix = "site-sources/humanizer/"
+    extra_names = git(root_checkout, "ls-tree", "-r", "--name-only", root_sha, "--", extra_prefix).decode().splitlines()
+    for name in extra_names:
+        path = PurePosixPath(name)
+        if path.suffix == ".md": continue
+        relative = "humanizer/" + name.removeprefix(extra_prefix)
+        target = OUTPUT / relative
+        target.parent.mkdir(parents=True, exist_ok=True)
+        blob = git(root_checkout, "show", f"{root_sha}:{name}")
+        if path.suffix == ".html": blob = legacy_redirect()
+        target.write_bytes(blob)
+        copied.append({"source": f"working-tools-site@{root_sha}:{name}", "output": relative, "sha256": hashlib.sha256(blob).hexdigest(), "bytes": len(blob)})
+        if path.suffix == ".html": routes.append("/" + relative.removesuffix("index.html"))
     manifest = {
         "schema_version": "working-tools.site-build.v1",
         "site_origin": args.site_origin,

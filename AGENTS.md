@@ -12,3 +12,5 @@ Run `python3 scripts/validate_suite_site.py`; use `--check-links` when public de
 Other Compass sites consume shared assets from this repository. Preserve public asset paths, legal pages and compatibility routes. Shared portfolio network source is maintained separately and copied deliberately; do not confuse that update-time dependency with assets fetched at runtime.
 
 Keep private systems and unshipped packages out of the public catalog. A successor release requires its own verified installation and distribution evidence. Preserve existing download URLs while successors are prepared.
+
+Release history is generated from the verified public `catalog/release-history.json` into `data/release-history.json`. Run `scripts/render_release_pages.py` to produce `/releases/` and stable `/plugins/<id>/releases/<version>/` routes. Keep product IDs and these URLs unchanged through visual rebrands. The public distribution completion command owns publication and Site synchronization; use its configured adapter and exact source revisions, then verify live catalog bytes. See `docs/release-ui-patterns.md`.

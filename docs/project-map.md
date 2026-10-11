@@ -77,3 +77,7 @@ python3 scripts/validate_suite_site.py --check-links
 Use a local HTTP preview for catalog interaction checks. Before publishing,
 verify desktop and mobile layouts, keyboard focus, filter states, package links,
 and legacy destinations in a rendered browser.
+
+## Release catalog
+
+`data/release-history.json` is the verified multi-product release projection. `scripts/render_release_pages.py` generates the history directory and fixed product/version pages. `assets/css/release-pages.css` uses the current site tokens; `docs/release-ui-patterns.md` records the rebrand contract. Build with `scripts/build_working_tools_site.py --root-revision <full-commit>` and existing companion pins. Publication remains the existing Sites source push, save-version and deploy flow; the plugin repository completion adapter returns a live catalog receipt.
