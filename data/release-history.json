@@ -2418,7 +2418,7 @@
           "verification": {
             "archive_verified": false,
             "layout_verified": false,
-            "reason": "Package bytes match the published checksum, but runtime/data-explorer/dist/widget.html is not present in the tagged source tree. This historical package cannot pass exact source verification. The original GitHub release remains available."
+            "reason": "unexpected member not in manifest: 'runtime/data-explorer/dist/widget.html'"
           }
         }
       ],
@@ -3348,6 +3348,49 @@
       "upgrade_guidance": "Choose this exact version from the marketplace or replace the prior plugin directory with its ZIP. Review the release notes and package README.",
       "releases": [
         {
+          "release_key": "work-management/v0.4.0",
+          "product_id": "work-management",
+          "version": "0.4.0",
+          "git_tag": "work-management/v0.4.0",
+          "source_commit": "24a1e442415adeebe49dbb6b5193eddfa17d4b35",
+          "published_at": "2026-10-11T07:52:10Z",
+          "release_url": "https://github.com/JonathanKHobson/working-tools-plugins/releases/tag/work-management/v0.4.0",
+          "channel": "stable",
+          "distribution_status": "available",
+          "summary": "Finish authorized public updates with versioned publication and catalog deployment.",
+          "notes": "Finish authorized public updates with versioned publication and catalog deployment.\n\nA local edit or Git push could previously finish without producing a versioned download or updating the public catalog. Plugin maintenance now routes completed public updates through the owning repository's executable release workflow.\n\n- Adds the completed-update event and the catalog-only recovery command to the maintained plugin maintenance route.\n- Requires instruction, reference and shared-template changes to participate in release detection.\n- Preserves reviewed private exclusions, historical package bytes and independent product versions.\n- Distinguishes prepared packages, GitHub publication and verified Site deployment so a partial failure can resume without another version.\n\nCompatibility: Compatible optional completion workflow. Existing plugin and skill IDs, invocation names, installation layout and provider requirements remain unchanged. Publication still requires existing user authorization and repository access.\n\nUpgrade: Install this version through the existing Codex or Claude marketplace route, or replace the prior plugin directory with this exact-version ZIP. Maintainers configure the release repository's private host adapter; end users need no publication setup.\n\nValidation: Release completion helpers are covered by repository fixtures. The exact package inventory and supported manifest versions are checked before publication. This release does not assert that every plugin workflow or external provider was executed.",
+          "notes_provenance": "github-release:409515754",
+          "assets": [
+            {
+              "role": "file-manifest",
+              "name": "work-management-0.4.0.files.json",
+              "url": "https://github.com/JonathanKHobson/working-tools-plugins/releases/download/work-management/v0.4.0/work-management-0.4.0.files.json",
+              "size": 32560,
+              "sha256": "d8ec282133e8bfa421dafc4c8618a902c0f0f4506e024be07f86d01322ca54c8"
+            },
+            {
+              "role": "installation",
+              "name": "work-management-0.4.0.zip",
+              "url": "https://github.com/JonathanKHobson/working-tools-plugins/releases/download/work-management/v0.4.0/work-management-0.4.0.zip",
+              "size": 3579067,
+              "sha256": "ca2cb8102db265391d50893cb636b95af11ff54b8c97aaf635904bf03eb017e1"
+            },
+            {
+              "role": "checksum",
+              "name": "work-management-0.4.0.zip.sha256",
+              "url": "https://github.com/JonathanKHobson/working-tools-plugins/releases/download/work-management/v0.4.0/work-management-0.4.0.zip.sha256",
+              "size": 92,
+              "sha256": "c491c5c30df295bfa3813fea8a872706aa3be4f26ca06189aadb1cb13bdd774f"
+            }
+          ],
+          "compatibility": "Compatible optional completion workflow. Existing plugin and skill IDs, invocation names, installation layout and provider requirements remain unchanged. Publication still requires existing user authorization and repository access.",
+          "upgrade_guidance": "Install this version through the existing Codex or Claude marketplace route, or replace the prior plugin directory with this exact-version ZIP. Maintainers configure the release repository's private host adapter; end users need no publication setup.",
+          "verification": {
+            "archive_verified": true,
+            "layout_verified": true
+          }
+        },
+        {
           "release_key": "work-management/v0.3.2",
           "product_id": "work-management",
           "version": "0.3.2",
@@ -3520,7 +3563,7 @@
           }
         }
       ],
-      "current_release_key": "work-management/v0.3.2"
+      "current_release_key": "work-management/v0.4.0"
     },
     {
       "id": "graphic-design-studio",
