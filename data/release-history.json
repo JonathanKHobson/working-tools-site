@@ -968,6 +968,49 @@
       "upgrade_guidance": "Choose this exact version from the marketplace or replace the prior plugin directory with its ZIP. Review the release notes and package README.",
       "releases": [
         {
+          "release_key": "instructional-design-studio/v0.3.0",
+          "product_id": "instructional-design-studio",
+          "version": "0.3.0",
+          "git_tag": "instructional-design-studio/v0.3.0",
+          "source_commit": "ec323e57cd365551b95959dc2c806ad7d5518bc4",
+          "published_at": "2026-10-11T23:21:05Z",
+          "release_url": "https://github.com/JonathanKHobson/working-tools-plugins/releases/tag/instructional-design-studio/v0.3.0",
+          "channel": "stable",
+          "distribution_status": "available",
+          "summary": "Add exercise packaging with stable lesson IDs, separated answers and learner-path checks.",
+          "notes": "Add exercise packaging with stable lesson IDs, separated answers and learner-path checks.\n\nCourse-production handoff can prepare consistent problem, solution and explainer variants while preserving references and making incomplete delivery checks visible.\n\n- Adds one conditional exercise-packaging reference under course-production-handoff.\n- Preserves stable lesson and exercise identities across problem, solution and explainer variants.\n- Separates learner prompts from answers, and checks sequence, prerequisites and supporting files.\n- Identifies external migration dependencies and records what has or has not been tried with learners.\n- Updates the existing skill route, project map, MIT attribution and generated package metadata.\n\nSelected procedural adaptations from mattpocock/skills at commit 49dd158d1076134a641b33efb035946536778336 retain exact source paths and complete MIT notices. No upstream installer, runtime, hook, dependency or timed schedule is included.\n\nCompatibility: Compatible optional method addition to 0.2.2. Existing course-production-handoff invocation and installation layout remain supported; no new platform or LMS dependency is installed.\n\nUpgrade: Update the existing plugin to 0.3.0. Use course-production-handoff for an approved course or exercise pack; retain established IDs and verify the destination workflow separately.\n\nValidation: The cumulative source handoff verified all 33 changed canonical/installed file hashes and checked changed skill routing and relative links. Independent review covered the nine new method references and their license closure. Fictional scenario reviews provide static behavioral evidence only; they do not establish executed workflow performance or learner outcomes. Public projection corrections and generated metadata are checked separately by the release inventory and package validation.",
+          "notes_provenance": "github-release:409982864",
+          "assets": [
+            {
+              "role": "file-manifest",
+              "name": "instructional-design-studio-0.3.0.files.json",
+              "url": "https://github.com/JonathanKHobson/working-tools-plugins/releases/download/instructional-design-studio/v0.3.0/instructional-design-studio-0.3.0.files.json",
+              "size": 12365,
+              "sha256": "4da33c2eb468c51c116fb7fc596679746f5ec609e1d6eedaae0cb51c42e2e42c"
+            },
+            {
+              "role": "installation",
+              "name": "instructional-design-studio-0.3.0.zip",
+              "url": "https://github.com/JonathanKHobson/working-tools-plugins/releases/download/instructional-design-studio/v0.3.0/instructional-design-studio-0.3.0.zip",
+              "size": 230974,
+              "sha256": "2f9a0a8bdfef3ee17ba6b40e7fdbf6e501dc9e75106d0d75d96a72bc5f648adf"
+            },
+            {
+              "role": "checksum",
+              "name": "instructional-design-studio-0.3.0.zip.sha256",
+              "url": "https://github.com/JonathanKHobson/working-tools-plugins/releases/download/instructional-design-studio/v0.3.0/instructional-design-studio-0.3.0.zip.sha256",
+              "size": 104,
+              "sha256": "cf2b539b2ac3a4d3788bfea31404db760b310cd61d6647178d1c19e0a875674d"
+            }
+          ],
+          "compatibility": "Compatible optional method addition to 0.2.2. Existing course-production-handoff invocation and installation layout remain supported; no new platform or LMS dependency is installed.",
+          "upgrade_guidance": "Update the existing plugin to 0.3.0. Use course-production-handoff for an approved course or exercise pack; retain established IDs and verify the destination workflow separately.",
+          "verification": {
+            "archive_verified": true,
+            "layout_verified": true
+          }
+        },
+        {
           "release_key": "instructional-design-studio/v0.2.2",
           "product_id": "instructional-design-studio",
           "version": "0.2.2",
@@ -1140,7 +1183,7 @@
           }
         }
       ],
-      "current_release_key": "instructional-design-studio/v0.2.2"
+      "current_release_key": "instructional-design-studio/v0.3.0"
     },
     {
       "id": "workshop-facilitator",
@@ -1840,6 +1883,49 @@
       "upgrade_guidance": "Choose this exact version from the marketplace or replace the prior plugin directory with its ZIP. Review the release notes and package README.",
       "releases": [
         {
+          "release_key": "development-studio/v0.3.0",
+          "product_id": "development-studio",
+          "version": "0.3.0",
+          "git_tag": "development-studio/v0.3.0",
+          "source_commit": "ec323e57cd365551b95959dc2c806ad7d5518bc4",
+          "published_at": "2026-10-11T23:20:10Z",
+          "release_url": "https://github.com/JonathanKHobson/working-tools-plugins/releases/tag/development-studio/v0.3.0",
+          "channel": "stable",
+          "distribution_status": "available",
+          "summary": "Strengthen module-design comparison and difficult-bug reproduction within existing development methods.",
+          "notes": "Strengthen module-design comparison and difficult-bug reproduction within existing development methods.\n\nThe current development and debugging routes gain concrete checks for caller contracts, module boundaries, intermittent failures and comparable performance evidence.\n\n- Adds module-design review covering caller contracts, alternatives, dependency boundaries and coverage-preserving refactors.\n- Adds symptom-specific reproduction, bounded intermittent evidence and comparable performance baselines.\n- Routes these checks conditionally through development-studio, debug-software and systematic-debugging while keeping one primary debugging method.\n- Connects implementation slicing to Work Management when available, with a local fallback when it is absent.\n- Corrects an adaptation description and refreshes attribution and generated package metadata.\n\nSelected procedural adaptations from mattpocock/skills at commit 49dd158d1076134a641b33efb035946536778336 retain exact source paths and complete MIT notices. No upstream installer, runtime, hook, dependency or timed schedule is included.\n\nCompatibility: Compatible optional method additions to 0.2.3. Existing skills and provider boundaries remain unchanged. Work Management is optional for the planning handoff, with an explicit fallback.\n\nUpgrade: Update the existing plugin to 0.3.0. Use the same development, implementation and debugging entrypoints; no project dependency migration is required.\n\nValidation: The cumulative source handoff verified all 33 changed canonical/installed file hashes and checked changed skill routing and relative links. Independent review covered the nine new method references and their license closure. Fictional scenario reviews provide static behavioral evidence only; they do not establish executed workflow performance or learner outcomes. Public projection corrections and generated metadata are checked separately by the release inventory and package validation.",
+          "notes_provenance": "github-release:409982498",
+          "assets": [
+            {
+              "role": "file-manifest",
+              "name": "development-studio-0.3.0.files.json",
+              "url": "https://github.com/JonathanKHobson/working-tools-plugins/releases/download/development-studio/v0.3.0/development-studio-0.3.0.files.json",
+              "size": 41649,
+              "sha256": "d7ae5c0e6d874dd29be550219e397fd35dc0a116214e00453b96e0d57e5c8b7f"
+            },
+            {
+              "role": "installation",
+              "name": "development-studio-0.3.0.zip",
+              "url": "https://github.com/JonathanKHobson/working-tools-plugins/releases/download/development-studio/v0.3.0/development-studio-0.3.0.zip",
+              "size": 808603,
+              "sha256": "1154ed54ba46fb38a69a962c71a561e38b75960c767ff350e991d05f69c6ae33"
+            },
+            {
+              "role": "checksum",
+              "name": "development-studio-0.3.0.zip.sha256",
+              "url": "https://github.com/JonathanKHobson/working-tools-plugins/releases/download/development-studio/v0.3.0/development-studio-0.3.0.zip.sha256",
+              "size": 95,
+              "sha256": "33d53879fc59bec75dcc3b43c3cf0187d9dda1a0f5f8ea56d86dc837a49e267e"
+            }
+          ],
+          "compatibility": "Compatible optional method additions to 0.2.3. Existing skills and provider boundaries remain unchanged. Work Management is optional for the planning handoff, with an explicit fallback.",
+          "upgrade_guidance": "Update the existing plugin to 0.3.0. Use the same development, implementation and debugging entrypoints; no project dependency migration is required.",
+          "verification": {
+            "archive_verified": true,
+            "layout_verified": true
+          }
+        },
+        {
           "release_key": "development-studio/v0.2.3",
           "product_id": "development-studio",
           "version": "0.2.3",
@@ -2055,7 +2141,7 @@
           }
         }
       ],
-      "current_release_key": "development-studio/v0.2.3"
+      "current_release_key": "development-studio/v0.3.0"
     },
     {
       "id": "video-templates",
@@ -2476,6 +2562,49 @@
       "upgrade_guidance": "Choose this exact version from the marketplace or replace the prior plugin directory with its ZIP. Review the release notes and package README.",
       "releases": [
         {
+          "release_key": "activities-templates/v0.1.4",
+          "product_id": "activities-templates",
+          "version": "0.1.4",
+          "git_tag": "activities-templates/v0.1.4",
+          "source_commit": "ec323e57cd365551b95959dc2c806ad7d5518bc4",
+          "published_at": "2026-10-11T23:16:44Z",
+          "release_url": "https://github.com/JonathanKHobson/working-tools-plugins/releases/tag/activities-templates/v0.1.4",
+          "channel": "stable",
+          "distribution_status": "available",
+          "summary": "Reduce repeated catalog-server memory while preserving all twelve domain contracts.",
+          "notes": "Reduce repeated catalog-server memory while preserving all twelve domain contracts.\n\nSeveral chats previously loaded separate SDK copies for the same catalog domain. The included transport shares imports per domain, code generation and binding while retaining independent sessions.\n\nAdds an on-demand private Unix-socket backend and bounded stdio proxies. Validates socket ownership, isolates domains and bindings, runs blocking handlers off the shared event loop, drains pending responses and retires an unused backend. Failures are surfaced without replaying writes. Direct SDK transport remains the compatibility and rollback path; existing processes continue their own generation. No schedule or AI monitor is introduced.\n\nCompatibility: Compatible internal transport correction. Existing server IDs, tools, schemas and resources remain unchanged; non-POSIX hosts retain direct SDK transport.\n\nUpgrade: Update Activities Templates using its existing installation method. Keep the configured interpreter and external catalog binding. Existing connections are not hot-reloaded.\n\nValidation: All eight admitted source hashes match the completed14-test runtime/lifecycle/contract-parity receipt. Tests cover all twelve registrations, synthetic retrieval/resources, private socket modes, cancellation, EOF, isolation and recovery. No private corpus is packaged.",
+          "notes_provenance": "github-release:409981118",
+          "assets": [
+            {
+              "role": "file-manifest",
+              "name": "activities-templates-0.1.4.files.json",
+              "url": "https://github.com/JonathanKHobson/working-tools-plugins/releases/download/activities-templates/v0.1.4/activities-templates-0.1.4.files.json",
+              "size": 5111,
+              "sha256": "944c7b5635d3b7d02600e51942205748498c55d85f9807952c4de7b66ff03a34"
+            },
+            {
+              "role": "installation",
+              "name": "activities-templates-0.1.4.zip",
+              "url": "https://github.com/JonathanKHobson/working-tools-plugins/releases/download/activities-templates/v0.1.4/activities-templates-0.1.4.zip",
+              "size": 110704,
+              "sha256": "c71f9eefecd2441d68f0a94677220c1bef8a65876f033834fc4497aea9a2388f"
+            },
+            {
+              "role": "checksum",
+              "name": "activities-templates-0.1.4.zip.sha256",
+              "url": "https://github.com/JonathanKHobson/working-tools-plugins/releases/download/activities-templates/v0.1.4/activities-templates-0.1.4.zip.sha256",
+              "size": 97,
+              "sha256": "f9e2a8a93e03a72e03289b656303204a518cd765ee96bc5058e535134c00fe0f"
+            }
+          ],
+          "compatibility": "Compatible internal transport correction. Existing server IDs, tools, schemas and resources remain unchanged; non-POSIX hosts retain direct SDK transport.",
+          "upgrade_guidance": "Update Activities Templates using its existing installation method. Keep the configured interpreter and external catalog binding. Existing connections are not hot-reloaded.",
+          "verification": {
+            "archive_verified": true,
+            "layout_verified": true
+          }
+        },
+        {
           "release_key": "activities-templates/v0.1.3",
           "product_id": "activities-templates",
           "version": "0.1.3",
@@ -2605,7 +2734,7 @@
           }
         }
       ],
-      "current_release_key": "activities-templates/v0.1.3"
+      "current_release_key": "activities-templates/v0.1.4"
     },
     {
       "id": "design-templates",
@@ -3391,6 +3520,49 @@
       "upgrade_guidance": "Choose this exact version from the marketplace or replace the prior plugin directory with its ZIP. Review the release notes and package README.",
       "releases": [
         {
+          "release_key": "work-management/v0.5.0",
+          "product_id": "work-management",
+          "version": "0.5.0",
+          "git_tag": "work-management/v0.5.0",
+          "source_commit": "ec323e57cd365551b95959dc2c806ad7d5518bc4",
+          "published_at": "2026-10-11T23:23:36Z",
+          "release_url": "https://github.com/JonathanKHobson/working-tools-plugins/releases/tag/work-management/v0.5.0",
+          "channel": "stable",
+          "distribution_status": "available",
+          "summary": "Preserve complete Studio-owned methods through maintenance and publication.",
+          "notes": "Preserve complete Studio-owned methods through maintenance and publication.\n\nThe maintained Studio should include complete reusable methods. Earlier public packaging incorrectly routed ordinary work to separate method installations.\n\nMaintenance now distinguishes included skills/helper scripts from external APIs, applications and runtimes. Method incorporation cannot be replaced by a separate-install handoff during packaging. Release acceptance checks local source, installed copies, package contents and website requirements together.\n\nAlso included in this accumulated batch:\n- Adds conditional domain-language and dependency-aware slicing references under product-definition.\n- Adds decision mapping for connected choices across sessions, using existing project records.\n- Adds evidence-based issue/PR triage under github-conventions and genuinely human-only setup preparation under work-handoff.\n- Preserves existing authorization and scope boundaries, with no automatic tracker publication or recurring work.\n- Clarifies historical versus cumulative adoption counts, removes private audit locators from the shared backlog and refreshes package metadata.\n\nSelected procedural adaptations from mattpocock/skills at commit 49dd158d1076134a641b33efb035946536778336 retain exact source paths and complete MIT notices. No upstream installer, runtime, hook, dependency or timed schedule is included. Routine local maintenance now records pending changes; publishing the accumulated public batch requires the explicit --publish command. Local installation and public publication are reported separately. Website-only edits do not version unrelated packages, and no schedule or background AI job is introduced.\n\nCompatibility: Compatible included-method expansion. Existing plugin and skill identifiers remain. Historical local method anchors resolve internally. Actual application, service and runtime requirements are preserved.\n\nUpgrade: Update the existing Studio or Toolkit package. Use its normal skill entrypoints; no additional writing, UX or prompt method pack is needed.\n\nValidation: Changed skill frontmatter and local reference closure checked. Bounded source-grounded procedure cases run without the redundant method packs; UX instruction-coverage checks are separate from real workbook/browser interaction or participant tests. Exact release archive, installation parity and catalog checks are recorded by the release workflow.\n\nAdditional integration checks: Adds an explicit preservation rule: useful content is removed only on user request or demonstrated equivalent replacement. Full procedural coverage, output evidence and host parity are required; ordinary helpers and methods remain incorporated.\n\nCross-Studio review: Refreshes the cross-Studio owner map against all 31 public owners and corrects skill counts so task routing includes existing specialist toolkits.",
+          "notes_provenance": "github-release:409983883",
+          "assets": [
+            {
+              "role": "file-manifest",
+              "name": "work-management-0.5.0.files.json",
+              "url": "https://github.com/JonathanKHobson/working-tools-plugins/releases/download/work-management/v0.5.0/work-management-0.5.0.files.json",
+              "size": 33237,
+              "sha256": "a4af419e9c6bb7459866dd3ef24723109c89e85fd533c25a258406f15c4d987e"
+            },
+            {
+              "role": "installation",
+              "name": "work-management-0.5.0.zip",
+              "url": "https://github.com/JonathanKHobson/working-tools-plugins/releases/download/work-management/v0.5.0/work-management-0.5.0.zip",
+              "size": 3596755,
+              "sha256": "aea87f8ddd98d1e707368be033539f747653a99f5ea13a3539691bae60f9b682"
+            },
+            {
+              "role": "checksum",
+              "name": "work-management-0.5.0.zip.sha256",
+              "url": "https://github.com/JonathanKHobson/working-tools-plugins/releases/download/work-management/v0.5.0/work-management-0.5.0.zip.sha256",
+              "size": 92,
+              "sha256": "e1511be4bfab94976ccbe153519fd688f3a72feb2056335a64bda48759b353af"
+            }
+          ],
+          "compatibility": "Compatible included-method expansion. Existing plugin and skill identifiers remain. Historical local method anchors resolve internally. Actual application, service and runtime requirements are preserved.",
+          "upgrade_guidance": "Update the existing Studio or Toolkit package. Use its normal skill entrypoints; no additional writing, UX or prompt method pack is needed.",
+          "verification": {
+            "archive_verified": true,
+            "layout_verified": true
+          }
+        },
+        {
           "release_key": "work-management/v0.4.0",
           "product_id": "work-management",
           "version": "0.4.0",
@@ -3606,7 +3778,7 @@
           }
         }
       ],
-      "current_release_key": "work-management/v0.4.0"
+      "current_release_key": "work-management/v0.5.0"
     },
     {
       "id": "graphic-design-studio",
@@ -3616,6 +3788,49 @@
       "compatibility": "Python 3.12 and declared dependencies for local runtime; Design Templates for optional chooser; Host image tools for generation",
       "upgrade_guidance": "Choose this exact version from the marketplace or replace the prior plugin directory with its ZIP. Review the release notes and package README.",
       "releases": [
+        {
+          "release_key": "graphic-design-studio/v0.4.0",
+          "product_id": "graphic-design-studio",
+          "version": "0.4.0",
+          "git_tag": "graphic-design-studio/v0.4.0",
+          "source_commit": "ec323e57cd365551b95959dc2c806ad7d5518bc4",
+          "published_at": "2026-10-11T23:20:40Z",
+          "release_url": "https://github.com/JonathanKHobson/working-tools-plugins/releases/tag/graphic-design-studio/v0.4.0",
+          "channel": "stable",
+          "distribution_status": "available",
+          "summary": "Strengthen responsive logo-family and production-asset verification.",
+          "notes": "Strengthen responsive logo-family and production-asset verification.\n\nA large raster file or polished mockup does not establish small-size usability, recognizable variants or a production-ready logo.\n\nAdds optical-master versus arrangement distinctions; apparent-size, pixel-density and transparent-padding checks; light/dark/one-color and crop verification; halo detection; evidence-based minimum sizes; and clear separation of visual resemblance from legal clearance. Exploratory and untested variants remain distinct from released assets.\n\nCompatibility: Compatible procedural addition under the existing graphic-design entrypoint.\n\nUpgrade: Update Graphic Design Studio and use the existing brand-guide production procedure when preparing or reviewing logo families.\n\nValidation: Reviewed the complete added production guidance against the actual canonical/public diff; private brand assets, project bindings and personal defaults are absent. This text-only method update does not claim that any particular logo passed the new checks.",
+          "notes_provenance": "github-release:409982673",
+          "assets": [
+            {
+              "role": "file-manifest",
+              "name": "graphic-design-studio-0.4.0.files.json",
+              "url": "https://github.com/JonathanKHobson/working-tools-plugins/releases/download/graphic-design-studio/v0.4.0/graphic-design-studio-0.4.0.files.json",
+              "size": 23509,
+              "sha256": "f19fe2a1acbedf85521407ed5535dc038419a530a49e30530ff44baaa9bbd91e"
+            },
+            {
+              "role": "installation",
+              "name": "graphic-design-studio-0.4.0.zip",
+              "url": "https://github.com/JonathanKHobson/working-tools-plugins/releases/download/graphic-design-studio/v0.4.0/graphic-design-studio-0.4.0.zip",
+              "size": 5001102,
+              "sha256": "fd1c44af04c7b42ea1fcce1b4486918e0902b01718228243de4c8170d9c0efad"
+            },
+            {
+              "role": "checksum",
+              "name": "graphic-design-studio-0.4.0.zip.sha256",
+              "url": "https://github.com/JonathanKHobson/working-tools-plugins/releases/download/graphic-design-studio/v0.4.0/graphic-design-studio-0.4.0.zip.sha256",
+              "size": 98,
+              "sha256": "5c47af82ab60005709d9958ab7312fad79f38f7ea8a7fdb97947cc1bcd028db8"
+            }
+          ],
+          "compatibility": "Compatible procedural addition under the existing graphic-design entrypoint.",
+          "upgrade_guidance": "Update Graphic Design Studio and use the existing brand-guide production procedure when preparing or reviewing logo families.",
+          "verification": {
+            "archive_verified": true,
+            "layout_verified": true
+          }
+        },
         {
           "release_key": "graphic-design-studio/v0.3.2",
           "product_id": "graphic-design-studio",
@@ -3789,7 +4004,7 @@
           }
         }
       ],
-      "current_release_key": "graphic-design-studio/v0.3.2"
+      "current_release_key": "graphic-design-studio/v0.4.0"
     },
     {
       "id": "brand-templates",
@@ -3799,6 +4014,49 @@
       "compatibility": "Python 3.12 and declared MCP dependencies; MCP Apps supporting host for the chooser",
       "upgrade_guidance": "Choose this exact version from the marketplace or replace the prior plugin directory with its ZIP. Review the release notes and package README.",
       "releases": [
+        {
+          "release_key": "brand-templates/v0.2.0",
+          "product_id": "brand-templates",
+          "version": "0.2.0",
+          "git_tag": "brand-templates/v0.2.0",
+          "source_commit": "ec323e57cd365551b95959dc2c806ad7d5518bc4",
+          "published_at": "2026-10-11T23:17:55Z",
+          "release_url": "https://github.com/JonathanKHobson/working-tools-plugins/releases/tag/brand-templates/v0.2.0",
+          "channel": "stable",
+          "distribution_status": "available",
+          "summary": "Add reusable logo-family galleries to brand-kit previews and exports.",
+          "notes": "Add reusable logo-family galleries to brand-kit previews and exports.\n\nA brand kit can include several logo variants without giving users a usable way to inspect them together.\n\nAdds a generic serialized logo-family gallery with variant labels, source-aware local paths, modal inspection and keyboard focus return. Native chooser and exported page share one JavaScript module and one style block; duplicate embedded copies were removed. The public projection retains104 eligible kits and excludes private brand data, assets and contextual defaults.\n\nCompatibility: Compatible chooser/gallery addition. Existing kit IDs, handoff contracts and external host bindings remain.\n\nUpgrade: Update Brand Templates. Existing authorized kits with logo-family data gain the preview; no private kit is added to the public distribution.\n\nValidation: Five catalog tests pass. Assembled104-kit export contains one module/style definition and excludes the private kit. Existing desktop/narrow, selection, modal Escape/focus-return and native-export visual checks were reused for unchanged gallery behavior; in-host MCP expansion and screen-reader narration remain untested.",
+          "notes_provenance": "github-release:409981246",
+          "assets": [
+            {
+              "role": "file-manifest",
+              "name": "brand-templates-0.2.0.files.json",
+              "url": "https://github.com/JonathanKHobson/working-tools-plugins/releases/download/brand-templates/v0.2.0/brand-templates-0.2.0.files.json",
+              "size": 598914,
+              "sha256": "29b3da2619e187ba15fbddc21b788d64f515b6daa9b6ccd29475c3bcc640268d"
+            },
+            {
+              "role": "installation",
+              "name": "brand-templates-0.2.0.zip",
+              "url": "https://github.com/JonathanKHobson/working-tools-plugins/releases/download/brand-templates/v0.2.0/brand-templates-0.2.0.zip",
+              "size": 117106985,
+              "sha256": "a644c3b227c3c08a0cd5b534b3bbdb02b6d94c98eb76b6485774204978e71e2d"
+            },
+            {
+              "role": "checksum",
+              "name": "brand-templates-0.2.0.zip.sha256",
+              "url": "https://github.com/JonathanKHobson/working-tools-plugins/releases/download/brand-templates/v0.2.0/brand-templates-0.2.0.zip.sha256",
+              "size": 92,
+              "sha256": "03a4e664f3702440536ed7066d769a301f696165aafa82fc71c7c9d15e09d07c"
+            }
+          ],
+          "compatibility": "Compatible chooser/gallery addition. Existing kit IDs, handoff contracts and external host bindings remain.",
+          "upgrade_guidance": "Update Brand Templates. Existing authorized kits with logo-family data gain the preview; no private kit is added to the public distribution.",
+          "verification": {
+            "archive_verified": true,
+            "layout_verified": true
+          }
+        },
         {
           "release_key": "brand-templates/v0.1.4",
           "product_id": "brand-templates",
@@ -3972,7 +4230,7 @@
           }
         }
       ],
-      "current_release_key": "brand-templates/v0.1.4"
+      "current_release_key": "brand-templates/v0.2.0"
     },
     {
       "id": "writing-templates",
@@ -4162,9 +4420,52 @@
       "name": "Social Content Studio",
       "kind": "plugin",
       "repository": "https://github.com/JonathanKHobson/working-tools-plugins",
-      "compatibility": "Your source facts, voice samples and platform authorization; Optional AIHumanizer social prose: aihumanizer@openai-curated-remote; Social Post Previewer app for rendered previews",
+      "compatibility": "Your source facts, voice samples and platform authorization; Social Post Previewer app for rendered previews",
       "upgrade_guidance": "Choose this exact version from the marketplace or replace the prior plugin directory with its ZIP. Review the release notes and package README.",
       "releases": [
+        {
+          "release_key": "social-content-studio/v0.3.0",
+          "product_id": "social-content-studio",
+          "version": "0.3.0",
+          "git_tag": "social-content-studio/v0.3.0",
+          "source_commit": "ec323e57cd365551b95959dc2c806ad7d5518bc4",
+          "published_at": "2026-10-11T23:22:52Z",
+          "release_url": "https://github.com/JonathanKHobson/working-tools-plugins/releases/tag/social-content-studio/v0.3.0",
+          "channel": "stable",
+          "distribution_status": "available",
+          "summary": "Include complete social prose revision and channel adaptation.",
+          "notes": "Include complete social prose revision and channel adaptation.\n\nThe maintained Studio should include complete reusable methods. Earlier public packaging incorrectly routed ordinary work to separate method installations.\n\nAdds a complete internal voice, structure, cadence, format and claim-preserving revision procedure at the preserved local reference address. Removes separate prose-method installation instructions while retaining real preview and publishing connections.\n\nCompatibility: Compatible included-method expansion. Existing plugin and skill identifiers remain. Historical local method anchors resolve internally. Actual application, service and runtime requirements are preserved.\n\nUpgrade: Update the existing Studio or Toolkit package. Use its normal skill entrypoints; no additional writing, UX or prompt method pack is needed.\n\nValidation: Changed skill frontmatter and local reference closure checked. Bounded source-grounded procedure cases run without the redundant method packs; UX instruction-coverage checks are separate from real workbook/browser interaction or participant tests. Exact release archive, installation parity and catalog checks are recorded by the release workflow.",
+          "notes_provenance": "github-release:409983574",
+          "assets": [
+            {
+              "role": "file-manifest",
+              "name": "social-content-studio-0.3.0.files.json",
+              "url": "https://github.com/JonathanKHobson/working-tools-plugins/releases/download/social-content-studio/v0.3.0/social-content-studio-0.3.0.files.json",
+              "size": 10461,
+              "sha256": "7a2173efc1a210a2dd744f13afec568b7bd5704685a70f630e477d6849e905fe"
+            },
+            {
+              "role": "installation",
+              "name": "social-content-studio-0.3.0.zip",
+              "url": "https://github.com/JonathanKHobson/working-tools-plugins/releases/download/social-content-studio/v0.3.0/social-content-studio-0.3.0.zip",
+              "size": 206258,
+              "sha256": "c0c101d0ca20232bc6c1e61978040aae3ee49d4dae484df8b294b3ac9bc2cb96"
+            },
+            {
+              "role": "checksum",
+              "name": "social-content-studio-0.3.0.zip.sha256",
+              "url": "https://github.com/JonathanKHobson/working-tools-plugins/releases/download/social-content-studio/v0.3.0/social-content-studio-0.3.0.zip.sha256",
+              "size": 98,
+              "sha256": "98fd1a0ae36ec26a311c72599309e7c464adf44cee42b1c748f5dcdb32e99ded"
+            }
+          ],
+          "compatibility": "Compatible included-method expansion. Existing plugin and skill identifiers remain. Historical local method anchors resolve internally. Actual application, service and runtime requirements are preserved.",
+          "upgrade_guidance": "Update the existing Studio or Toolkit package. Use its normal skill entrypoints; no additional writing, UX or prompt method pack is needed.",
+          "verification": {
+            "archive_verified": true,
+            "layout_verified": true
+          }
+        },
         {
           "release_key": "social-content-studio/v0.2.3",
           "product_id": "social-content-studio",
@@ -4338,16 +4639,59 @@
           }
         }
       ],
-      "current_release_key": "social-content-studio/v0.2.3"
+      "current_release_key": "social-content-studio/v0.3.0"
     },
     {
       "id": "creative-writing-studio",
       "name": "Creative Toolkit",
       "kind": "plugin",
       "repository": "https://github.com/JonathanKHobson/working-tools-plugins",
-      "compatibility": "Your draft, canon notes or game material; Optional AIHumanizer creative prose: aihumanizer@openai-curated-remote; Python >=3.10 and recipient-configured backends for optional Atlas, TTRPG and Draw Think integrations",
+      "compatibility": "Your draft, canon notes or game material; Python >=3.10 and recipient-configured backends for optional Atlas, TTRPG and Draw Think integrations",
       "upgrade_guidance": "Choose this exact version from the marketplace or replace the prior plugin directory with its ZIP. Review the release notes and package README.",
       "releases": [
+        {
+          "release_key": "creative-writing-studio/v0.4.0",
+          "product_id": "creative-writing-studio",
+          "version": "0.4.0",
+          "git_tag": "creative-writing-studio/v0.4.0",
+          "source_commit": "ec323e57cd365551b95959dc2c806ad7d5518bc4",
+          "published_at": "2026-10-11T23:19:42Z",
+          "release_url": "https://github.com/JonathanKHobson/working-tools-plugins/releases/tag/creative-writing-studio/v0.4.0",
+          "channel": "stable",
+          "distribution_status": "available",
+          "summary": "Include creative prose revision within Story Architecture.",
+          "notes": "Include creative prose revision within Story Architecture.\n\nThe maintained Studio should include complete reusable methods. Earlier public packaging incorrectly routed ordinary work to separate method installations.\n\nAdds a complete scene, viewpoint, dialogue, cadence and continuity revision procedure, including unreliable narration and deliberate exposition. Existing craft, canon and runtime integrations remain available.\n\nCompatibility: Compatible included-method expansion. Existing plugin and skill identifiers remain. Historical local method anchors resolve internally. Actual application, service and runtime requirements are preserved.\n\nUpgrade: Update the existing Studio or Toolkit package. Use its normal skill entrypoints; no additional writing, UX or prompt method pack is needed.\n\nValidation: Changed skill frontmatter and local reference closure checked. Bounded source-grounded procedure cases run without the redundant method packs; UX instruction-coverage checks are separate from real workbook/browser interaction or participant tests. Exact release archive, installation parity and catalog checks are recorded by the release workflow.",
+          "notes_provenance": "github-release:409982284",
+          "assets": [
+            {
+              "role": "file-manifest",
+              "name": "creative-writing-studio-0.4.0.files.json",
+              "url": "https://github.com/JonathanKHobson/working-tools-plugins/releases/download/creative-writing-studio/v0.4.0/creative-writing-studio-0.4.0.files.json",
+              "size": 21729,
+              "sha256": "648a22927ef71e7b60a6d7fb351f4c11fc30cfd33a0a20950e8c7e76cda4314e"
+            },
+            {
+              "role": "installation",
+              "name": "creative-writing-studio-0.4.0.zip",
+              "url": "https://github.com/JonathanKHobson/working-tools-plugins/releases/download/creative-writing-studio/v0.4.0/creative-writing-studio-0.4.0.zip",
+              "size": 357626,
+              "sha256": "20e0be6f496dcfd21a557b5c6b3e292400dc536d9d54f5939cae8a9708d9015c"
+            },
+            {
+              "role": "checksum",
+              "name": "creative-writing-studio-0.4.0.zip.sha256",
+              "url": "https://github.com/JonathanKHobson/working-tools-plugins/releases/download/creative-writing-studio/v0.4.0/creative-writing-studio-0.4.0.zip.sha256",
+              "size": 100,
+              "sha256": "de806fdd9e12722101468c9354f6073b140ce706015d23198bce346e6fa3682f"
+            }
+          ],
+          "compatibility": "Compatible included-method expansion. Existing plugin and skill identifiers remain. Historical local method anchors resolve internally. Actual application, service and runtime requirements are preserved.",
+          "upgrade_guidance": "Update the existing Studio or Toolkit package. Use its normal skill entrypoints; no additional writing, UX or prompt method pack is needed.",
+          "verification": {
+            "archive_verified": true,
+            "layout_verified": true
+          }
+        },
         {
           "release_key": "creative-writing-studio/v0.3.4",
           "product_id": "creative-writing-studio",
@@ -4564,16 +4908,59 @@
           }
         }
       ],
-      "current_release_key": "creative-writing-studio/v0.3.4"
+      "current_release_key": "creative-writing-studio/v0.4.0"
     },
     {
       "id": "master-security-toolkit",
       "name": "Master Security Toolkit",
       "kind": "plugin",
       "repository": "https://github.com/JonathanKHobson/working-tools-plugins",
-      "compatibility": "Python 3 on PATH for local scanner and optional Atlas launcher; Python 3.10+ for publication preflight; Optional Injection Checker depth methods in Codex: injection-checker@openai-curated-remote; Optional security Atlas: Activities Templates runtime and recipient-owned approved catalog; Node.js only for Cloudflare coverage-audit JSON validator workflows",
+      "compatibility": "Python 3 on PATH for local scanner and optional Atlas launcher; Python 3.10+ for publication preflight; Optional security Atlas: Activities Templates runtime and recipient-owned approved catalog; Node.js only for Cloudflare coverage-audit JSON validator workflows",
       "upgrade_guidance": "Choose this exact version from the marketplace or replace the prior plugin directory with its ZIP. Review the release notes and package README.",
       "releases": [
+        {
+          "release_key": "master-security-toolkit/v0.3.0",
+          "product_id": "master-security-toolkit",
+          "version": "0.3.0",
+          "git_tag": "master-security-toolkit/v0.3.0",
+          "source_commit": "ec323e57cd365551b95959dc2c806ad7d5518bc4",
+          "published_at": "2026-10-11T23:21:48Z",
+          "release_url": "https://github.com/JonathanKHobson/working-tools-plugins/releases/tag/master-security-toolkit/v0.3.0",
+          "channel": "stable",
+          "distribution_status": "available",
+          "summary": "Include complete instruction and tool-authority review within Master Security Toolkit.",
+          "notes": "Include complete instruction and tool-authority review within Master Security Toolkit.\n\nThe maintained Studio should include complete reusable methods. Earlier public packaging incorrectly routed ordinary work to separate method installations.\n\nAdds tool/action boundary, severity/confidence and retry-calibration guidance. Instruction, indirect-content and regression routes use bundled methods with malicious and legitimate control cases. Prompt wording is not presented as runtime enforcement.\n\nCompatibility: Compatible included-method expansion. Existing plugin and skill identifiers remain. Historical local method anchors resolve internally. Actual application, service and runtime requirements are preserved.\n\nUpgrade: Update the existing Studio or Toolkit package. Use its normal skill entrypoints; no additional writing, UX or prompt method pack is needed.\n\nValidation: Changed skill frontmatter and local reference closure checked. Bounded source-grounded procedure cases run without the redundant method packs; UX instruction-coverage checks are separate from real workbook/browser interaction or participant tests. Exact release archive, installation parity and catalog checks are recorded by the release workflow.",
+          "notes_provenance": "github-release:409983122",
+          "assets": [
+            {
+              "role": "file-manifest",
+              "name": "master-security-toolkit-0.3.0.files.json",
+              "url": "https://github.com/JonathanKHobson/working-tools-plugins/releases/download/master-security-toolkit/v0.3.0/master-security-toolkit-0.3.0.files.json",
+              "size": 19081,
+              "sha256": "cbccb566f33d4e7bda0452c3c5cab4e81bd781bf9bac7e4567614f1932baba6d"
+            },
+            {
+              "role": "installation",
+              "name": "master-security-toolkit-0.3.0.zip",
+              "url": "https://github.com/JonathanKHobson/working-tools-plugins/releases/download/master-security-toolkit/v0.3.0/master-security-toolkit-0.3.0.zip",
+              "size": 9806806,
+              "sha256": "c0b5270580ebd34241100e8632588b1adc137f6ac8e7ae0a8eeec23cc2505c7d"
+            },
+            {
+              "role": "checksum",
+              "name": "master-security-toolkit-0.3.0.zip.sha256",
+              "url": "https://github.com/JonathanKHobson/working-tools-plugins/releases/download/master-security-toolkit/v0.3.0/master-security-toolkit-0.3.0.zip.sha256",
+              "size": 100,
+              "sha256": "53ec019a4279b1b5b0671db695f355f489a8a9f39b503bdc485d0ff9b184ce84"
+            }
+          ],
+          "compatibility": "Compatible included-method expansion. Existing plugin and skill identifiers remain. Historical local method anchors resolve internally. Actual application, service and runtime requirements are preserved.",
+          "upgrade_guidance": "Update the existing Studio or Toolkit package. Use its normal skill entrypoints; no additional writing, UX or prompt method pack is needed.",
+          "verification": {
+            "archive_verified": true,
+            "layout_verified": true
+          }
+        },
         {
           "release_key": "master-security-toolkit/v0.2.3",
           "product_id": "master-security-toolkit",
@@ -4704,16 +5091,59 @@
           }
         }
       ],
-      "current_release_key": "master-security-toolkit/v0.2.3"
+      "current_release_key": "master-security-toolkit/v0.3.0"
     },
     {
       "id": "prompt-playbook-studio",
       "name": "Prompt Playbook Studio",
       "kind": "plugin",
       "repository": "https://github.com/JonathanKHobson/working-tools-plugins",
-      "compatibility": "Your task facts, draft prompts or test cases; Optional official Prompt Engineer: prompt-engineer@openai-curated-remote on verified Codex hosts; Optional recipient-owned Prompt Compass and Atlas bindings; Framework Builder requires Python >=3.10 and MCP dependencies; Optional Promptbanken app and separate Work Management or Master Security Toolkit",
+      "compatibility": "Your task facts, draft prompts or test cases; Optional recipient-owned Prompt Compass and Atlas bindings; Framework Builder requires Python >=3.10 and MCP dependencies; Optional Promptbanken app and separate Work Management or Master Security Toolkit",
       "upgrade_guidance": "Choose this exact version from the marketplace or replace the prior plugin directory with its ZIP. Review the release notes and package README.",
       "releases": [
+        {
+          "release_key": "prompt-playbook-studio/v0.3.0",
+          "product_id": "prompt-playbook-studio",
+          "version": "0.3.0",
+          "git_tag": "prompt-playbook-studio/v0.3.0",
+          "source_commit": "ec323e57cd365551b95959dc2c806ad7d5518bc4",
+          "published_at": "2026-10-11T23:22:11Z",
+          "release_url": "https://github.com/JonathanKHobson/working-tools-plugins/releases/tag/prompt-playbook-studio/v0.3.0",
+          "channel": "stable",
+          "distribution_status": "available",
+          "summary": "Make prompt design, refinement, evaluation and safety fully Studio-owned.",
+          "notes": "Make prompt design, refinement, evaluation and safety fully Studio-owned.\n\nThe maintained Studio should include complete reusable methods. Earlier public packaging incorrectly routed ordinary work to separate method installations.\n\nComplete operational prompt-design, refinement and safety steps replace external method handoffs. Evaluation and routing retain included patterns and tools; prior method anchors now resolve internally.\n\nCompatibility: Compatible included-method expansion. Existing plugin and skill identifiers remain. Historical local method anchors resolve internally. Actual application, service and runtime requirements are preserved.\n\nUpgrade: Update the existing Studio or Toolkit package. Use its normal skill entrypoints; no additional writing, UX or prompt method pack is needed.\n\nValidation: Changed skill frontmatter and local reference closure checked. Bounded source-grounded procedure cases run without the redundant method packs; UX instruction-coverage checks are separate from real workbook/browser interaction or participant tests. Exact release archive, installation parity and catalog checks are recorded by the release workflow.\n\nAdditional integration checks: Direct design and refinement paths now verify platform-specific capabilities against current primary documentation and retain usable portable output when documentation is unavailable.",
+          "notes_provenance": "github-release:409983254",
+          "assets": [
+            {
+              "role": "file-manifest",
+              "name": "prompt-playbook-studio-0.3.0.files.json",
+              "url": "https://github.com/JonathanKHobson/working-tools-plugins/releases/download/prompt-playbook-studio/v0.3.0/prompt-playbook-studio-0.3.0.files.json",
+              "size": 12107,
+              "sha256": "04eb2e9abc5a71bf33e6e30207b802cd80606ec4b53aa6433fb2b8e66b1aad7e"
+            },
+            {
+              "role": "installation",
+              "name": "prompt-playbook-studio-0.3.0.zip",
+              "url": "https://github.com/JonathanKHobson/working-tools-plugins/releases/download/prompt-playbook-studio/v0.3.0/prompt-playbook-studio-0.3.0.zip",
+              "size": 10550999,
+              "sha256": "145c5f51f0604e0a18855f903e3a52ca4d9b6ab8e4a11cde838ae5b89748680a"
+            },
+            {
+              "role": "checksum",
+              "name": "prompt-playbook-studio-0.3.0.zip.sha256",
+              "url": "https://github.com/JonathanKHobson/working-tools-plugins/releases/download/prompt-playbook-studio/v0.3.0/prompt-playbook-studio-0.3.0.zip.sha256",
+              "size": 99,
+              "sha256": "aec36a91b09946d1494bc7e1c39086e14c4a2323990ceeb13c905b8beca649fb"
+            }
+          ],
+          "compatibility": "Compatible included-method expansion. Existing plugin and skill identifiers remain. Historical local method anchors resolve internally. Actual application, service and runtime requirements are preserved.",
+          "upgrade_guidance": "Update the existing Studio or Toolkit package. Use its normal skill entrypoints; no additional writing, UX or prompt method pack is needed.",
+          "verification": {
+            "archive_verified": true,
+            "layout_verified": true
+          }
+        },
         {
           "release_key": "prompt-playbook-studio/v0.2.2",
           "product_id": "prompt-playbook-studio",
@@ -4801,16 +5231,59 @@
           }
         }
       ],
-      "current_release_key": "prompt-playbook-studio/v0.2.2"
+      "current_release_key": "prompt-playbook-studio/v0.3.0"
     },
     {
       "id": "career-studio",
       "name": "Career Studio",
       "kind": "plugin",
       "repository": "https://github.com/JonathanKHobson/working-tools-plugins",
-      "compatibility": "Your real work evidence, target role or exact application prompt, and action-specific authorization; Python 3 on PATH for the optional Career Atlas launcher; Optional Career Atlas: separately installed Activities Templates runtime and recipient-owned approved catalog; Optional Job Application Compass: separately maintained operator-owned private runtime; no public backend bundled; Optional Codex depth methods: aihumanizer@openai-curated-remote, coverletterwriter@openai-curated-remote, uiuxdesigner@openai-curated-remote",
+      "compatibility": "Your real work evidence, target role or exact application prompt, and action-specific authorization; Python 3 on PATH for the optional Career Atlas launcher; Optional Career Atlas: separately installed Activities Templates runtime and recipient-owned approved catalog; Optional Job Application Compass: separately maintained operator-owned private runtime; no public backend bundled",
       "upgrade_guidance": "Choose this exact version from the marketplace or replace the prior plugin directory with its ZIP. Review the release notes and package README.",
       "releases": [
+        {
+          "release_key": "career-studio/v0.3.0",
+          "product_id": "career-studio",
+          "version": "0.3.0",
+          "git_tag": "career-studio/v0.3.0",
+          "source_commit": "ec323e57cd365551b95959dc2c806ad7d5518bc4",
+          "published_at": "2026-10-11T23:19:14Z",
+          "release_url": "https://github.com/JonathanKHobson/working-tools-plugins/releases/tag/career-studio/v0.3.0",
+          "channel": "stable",
+          "distribution_status": "available",
+          "summary": "Keep career writing and UX interview practice complete inside Career Studio.",
+          "notes": "Keep career writing and UX interview practice complete inside Career Studio.\n\nThe maintained Studio should include complete reusable methods. Earlier public packaging incorrectly routed ordinary work to separate method installations.\n\nLetter, resume, application, outreach and portfolio work route directly to included procedures. Adds an evidence-grounded UX interview practice method that distinguishes real experience from hypothetical challenges.\n\nCompatibility: Compatible included-method expansion. Existing plugin and skill identifiers remain. Historical local method anchors resolve internally. Actual application, service and runtime requirements are preserved.\n\nUpgrade: Update the existing Studio or Toolkit package. Use its normal skill entrypoints; no additional writing, UX or prompt method pack is needed.\n\nValidation: Changed skill frontmatter and local reference closure checked. Bounded source-grounded procedure cases run without the redundant method packs; UX instruction-coverage checks are separate from real workbook/browser interaction or participant tests. Exact release archive, installation parity and catalog checks are recorded by the release workflow.\n\nAdditional integration checks: Adds complete letter-feedback procedure, direct referral-consent checks and evidence-to-role review without unsupported endorsement. Academic application format now follows the actual call instead of a universal one-page constraint.",
+          "notes_provenance": "github-release:409982114",
+          "assets": [
+            {
+              "role": "file-manifest",
+              "name": "career-studio-0.3.0.files.json",
+              "url": "https://github.com/JonathanKHobson/working-tools-plugins/releases/download/career-studio/v0.3.0/career-studio-0.3.0.files.json",
+              "size": 22055,
+              "sha256": "09e9b19f086c6f996b507bbf5a9e9953703e137d4e59fa8fd9aba2e33fc02e8c"
+            },
+            {
+              "role": "installation",
+              "name": "career-studio-0.3.0.zip",
+              "url": "https://github.com/JonathanKHobson/working-tools-plugins/releases/download/career-studio/v0.3.0/career-studio-0.3.0.zip",
+              "size": 368391,
+              "sha256": "197b43c73b0b8a31043b2891a41d45c47a75a85b7d6c2802c1a9da6c6c82c990"
+            },
+            {
+              "role": "checksum",
+              "name": "career-studio-0.3.0.zip.sha256",
+              "url": "https://github.com/JonathanKHobson/working-tools-plugins/releases/download/career-studio/v0.3.0/career-studio-0.3.0.zip.sha256",
+              "size": 90,
+              "sha256": "dfb3947551d8e56936d5daece8ba7accd046b18b3ddd32452f240bc9cc4b3289"
+            }
+          ],
+          "compatibility": "Compatible included-method expansion. Existing plugin and skill identifiers remain. Historical local method anchors resolve internally. Actual application, service and runtime requirements are preserved.",
+          "upgrade_guidance": "Update the existing Studio or Toolkit package. Use its normal skill entrypoints; no additional writing, UX or prompt method pack is needed.",
+          "verification": {
+            "archive_verified": true,
+            "layout_verified": true
+          }
+        },
         {
           "release_key": "career-studio/v0.2.1",
           "product_id": "career-studio",
@@ -4898,16 +5371,59 @@
           }
         }
       ],
-      "current_release_key": "career-studio/v0.2.1"
+      "current_release_key": "career-studio/v0.3.0"
     },
     {
       "id": "marketing-strategy-studio",
       "name": "Marketing Strategy Studio",
       "kind": "plugin",
       "repository": "https://github.com/JonathanKHobson/working-tools-plugins",
-      "compatibility": "Your offer, audience evidence, brand scope and current task constraints; Optional official Codex providers: aihumanizer@openai-curated-remote, uiuxdesigner@openai-curated-remote, creative-production@openai-curated-remote; Optional recipient-owned YouTube transcript server and messaging integration for retained publisher method; no automatic install or send; Optional recipient-owned Atlas Marketing local binding; separate Writing Quality, Research, Social, Graphic/Video, Work Management when installed",
+      "compatibility": "Your offer, audience evidence, brand scope and current task constraints; Optional official OpenAI Creative Production tools for asset production; Optional recipient-owned YouTube transcript server and messaging integration for retained publisher method; no automatic install or send; Optional recipient-owned Atlas Marketing local binding; separate Writing Quality, Research, Social, Graphic/Video, Work Management when installed",
       "upgrade_guidance": "Choose this exact version from the marketplace or replace the prior plugin directory with its ZIP. Review the release notes and package README.",
       "releases": [
+        {
+          "release_key": "marketing-strategy-studio/v0.4.0",
+          "product_id": "marketing-strategy-studio",
+          "version": "0.4.0",
+          "git_tag": "marketing-strategy-studio/v0.4.0",
+          "source_commit": "ec323e57cd365551b95959dc2c806ad7d5518bc4",
+          "published_at": "2026-10-11T23:21:26Z",
+          "release_url": "https://github.com/JonathanKHobson/working-tools-plugins/releases/tag/marketing-strategy-studio/v0.4.0",
+          "channel": "stable",
+          "distribution_status": "available",
+          "summary": "Keep copy, search and commerce review inside Marketing Strategy Studio.",
+          "notes": "Keep copy, search and commerce review inside Marketing Strategy Studio.\n\nThe maintained Studio should include complete reusable methods. Earlier public packaging incorrectly routed ordinary work to separate method installations.\n\nInternal procedures now own copy revision, search-content review and end-to-end commerce usability. Ordinary prose and conversion work no longer requests separate method plugins; asset/account execution still uses actual tools.\n\nCompatibility: Compatible included-method expansion. Existing plugin and skill identifiers remain. Historical local method anchors resolve internally. Actual application, service and runtime requirements are preserved.\n\nUpgrade: Update the existing Studio or Toolkit package. Use its normal skill entrypoints; no additional writing, UX or prompt method pack is needed.\n\nValidation: Changed skill frontmatter and local reference closure checked. Bounded source-grounded procedure cases run without the redundant method packs; UX instruction-coverage checks are separate from real workbook/browser interaction or participant tests. Exact release archive, installation parity and catalog checks are recorded by the release workflow.\n\nAdditional integration checks: The integrated transcript method now handles actual available providers, supplied transcripts, safe identifiers, source limitations, timestamped evidence, local output and explicitly authorized delivery without assuming the publisher host.",
+          "notes_provenance": "github-release:409982987",
+          "assets": [
+            {
+              "role": "file-manifest",
+              "name": "marketing-strategy-studio-0.4.0.files.json",
+              "url": "https://github.com/JonathanKHobson/working-tools-plugins/releases/download/marketing-strategy-studio/v0.4.0/marketing-strategy-studio-0.4.0.files.json",
+              "size": 154718,
+              "sha256": "0a52db87e410b4eb137be1bd5a724989b1a3b7253c87b46bf368421a0f2e6b50"
+            },
+            {
+              "role": "installation",
+              "name": "marketing-strategy-studio-0.4.0.zip",
+              "url": "https://github.com/JonathanKHobson/working-tools-plugins/releases/download/marketing-strategy-studio/v0.4.0/marketing-strategy-studio-0.4.0.zip",
+              "size": 4242897,
+              "sha256": "19e2a3c1b02866667f174cdfc5d04a410b84b8de5b187598db1a5dd786ce7a1b"
+            },
+            {
+              "role": "checksum",
+              "name": "marketing-strategy-studio-0.4.0.zip.sha256",
+              "url": "https://github.com/JonathanKHobson/working-tools-plugins/releases/download/marketing-strategy-studio/v0.4.0/marketing-strategy-studio-0.4.0.zip.sha256",
+              "size": 102,
+              "sha256": "7934af9afb52d6c824ec477366c802f89cc66b16bb7ad48bf19db371e7d42e61"
+            }
+          ],
+          "compatibility": "Compatible included-method expansion. Existing plugin and skill identifiers remain. Historical local method anchors resolve internally. Actual application, service and runtime requirements are preserved.",
+          "upgrade_guidance": "Update the existing Studio or Toolkit package. Use its normal skill entrypoints; no additional writing, UX or prompt method pack is needed.",
+          "verification": {
+            "archive_verified": true,
+            "layout_verified": true
+          }
+        },
         {
           "release_key": "marketing-strategy-studio/v0.3.1",
           "product_id": "marketing-strategy-studio",
@@ -4995,16 +5511,59 @@
           }
         }
       ],
-      "current_release_key": "marketing-strategy-studio/v0.3.1"
+      "current_release_key": "marketing-strategy-studio/v0.4.0"
     },
     {
       "id": "writing-quality-studio",
       "name": "Writing Quality Studio",
       "kind": "plugin",
       "repository": "https://github.com/JonathanKHobson/working-tools-plugins",
-      "compatibility": "Agent host with file-reading tools; Python 3.10+ for optional local text helpers; Separate provider access for connected documents and optional publisher methods",
+      "compatibility": "Agent host with file-reading tools; Python 3.10+ for optional local text helpers; Actual connected-document access only when reading or editing a connected document",
       "upgrade_guidance": "Choose this exact version from the marketplace or replace the prior plugin directory with its ZIP. Review the release notes and package README.",
       "releases": [
+        {
+          "release_key": "writing-quality-studio/v0.4.0",
+          "product_id": "writing-quality-studio",
+          "version": "0.4.0",
+          "git_tag": "writing-quality-studio/v0.4.0",
+          "source_commit": "ec323e57cd365551b95959dc2c806ad7d5518bc4",
+          "published_at": "2026-10-11T23:23:55Z",
+          "release_url": "https://github.com/JonathanKHobson/working-tools-plugins/releases/tag/writing-quality-studio/v0.4.0",
+          "channel": "stable",
+          "distribution_status": "available",
+          "summary": "Complete Studio-owned voice, revision and spoken-writing workflows.",
+          "notes": "Complete Studio-owned voice, revision and spoken-writing workflows.\n\nThe maintained Studio should include complete reusable methods. Earlier public packaging incorrectly routed ordinary work to separate method installations.\n\nIncluded voice-sample, brand/tone and spoken-composition procedures replace method-pack handoffs. Revision, multilingual/learning and specialist prose routes use existing included procedures. Previously queued collaborative writing is included in the same release.\n\nAlso included in this accumulated batch:\n- Adds one conditional collaborative-writing reference covering fragment capture, structure and complete drafts.\n- Makes beat-by-beat collaboration an explicit opt-in, so a normal drafting request still receives a complete draft.\n- Preserves source uncertainty, authorial choices and current edits instead of silently overwriting them.\n- Updates the existing skill route, project map, MIT attribution and generated package metadata.\n\nSelected procedural adaptations from mattpocock/skills at commit 49dd158d1076134a641b33efb035946536778336 retain exact source paths and complete MIT notices. No upstream installer, runtime, hook, dependency or timed schedule is included.\n\nCompatibility: Compatible included-method expansion. Existing plugin and skill identifiers remain. Historical local method anchors resolve internally. Actual application, service and runtime requirements are preserved.\n\nUpgrade: Update the existing Studio or Toolkit package. Use its normal skill entrypoints; no additional writing, UX or prompt method pack is needed.\n\nValidation: Changed skill frontmatter and local reference closure checked. Bounded source-grounded procedure cases run without the redundant method packs; UX instruction-coverage checks are separate from real workbook/browser interaction or participant tests. Exact release archive, installation parity and catalog checks are recorded by the release workflow.\n\nAdditional integration checks: Adds an explicit, evidence-linked editorial rubric for requested ratings and draft comparisons. Native voice adaptations are operative routes; detector and authorship claims remain excluded.\n\nCross-Studio review: Aligns selected writing-template handoffs with the actual verified collection contract, replacing stale resource counts and unsupported fallback claims while preserving native drafting.",
+          "notes_provenance": "github-release:409984013",
+          "assets": [
+            {
+              "role": "file-manifest",
+              "name": "writing-quality-studio-0.4.0.files.json",
+              "url": "https://github.com/JonathanKHobson/working-tools-plugins/releases/download/writing-quality-studio/v0.4.0/writing-quality-studio-0.4.0.files.json",
+              "size": 39646,
+              "sha256": "a788c424509b39375a9c39f76d3a006ca91396f879689bbab89411da2c8ed83d"
+            },
+            {
+              "role": "installation",
+              "name": "writing-quality-studio-0.4.0.zip",
+              "url": "https://github.com/JonathanKHobson/working-tools-plugins/releases/download/writing-quality-studio/v0.4.0/writing-quality-studio-0.4.0.zip",
+              "size": 2022815,
+              "sha256": "223fd65ffdf0d04b71e08d4ede3aedd422e4bdeee3ad54cfadb9b47a885fed57"
+            },
+            {
+              "role": "checksum",
+              "name": "writing-quality-studio-0.4.0.zip.sha256",
+              "url": "https://github.com/JonathanKHobson/working-tools-plugins/releases/download/writing-quality-studio/v0.4.0/writing-quality-studio-0.4.0.zip.sha256",
+              "size": 99,
+              "sha256": "89b5e79a4b14ff655652fcd8ed16638150c709af79e86c858ff3783dbe3e9f79"
+            }
+          ],
+          "compatibility": "Compatible included-method expansion. Existing plugin and skill identifiers remain. Historical local method anchors resolve internally. Actual application, service and runtime requirements are preserved.",
+          "upgrade_guidance": "Update the existing Studio or Toolkit package. Use its normal skill entrypoints; no additional writing, UX or prompt method pack is needed.",
+          "verification": {
+            "archive_verified": true,
+            "layout_verified": true
+          }
+        },
         {
           "release_key": "writing-quality-studio/v0.3.6",
           "product_id": "writing-quality-studio",
@@ -5106,16 +5665,59 @@
           }
         }
       ],
-      "current_release_key": "writing-quality-studio/v0.3.6"
+      "current_release_key": "writing-quality-studio/v0.4.0"
     },
     {
       "id": "ux-design-toolkit",
       "name": "UX Design Studio",
       "kind": "plugin",
       "repository": "https://github.com/JonathanKHobson/working-tools-plugins",
-      "compatibility": "Agent host with file and browser tools; Python 3.10+ for optional local adapters; macOS arm64 for the pinned native runtime; acquire its separate release asset; Recipient-owned Compass, Design Templates or Activities Templates configuration for those integrations; Separate publisher access for optional methods and the full spreadsheet-usability branch",
+      "compatibility": "Agent host with file and browser tools; Python 3.10+ for optional local adapters; macOS arm64 for the pinned native runtime; acquire its separate release asset; Recipient-owned Compass, Design Templates or Activities Templates configuration for those integrations",
       "upgrade_guidance": "Choose this exact version from the marketplace or replace the prior plugin directory with its ZIP. Review the release notes and package README.",
       "releases": [
+        {
+          "release_key": "ux-design-toolkit/v0.4.0",
+          "product_id": "ux-design-toolkit",
+          "version": "0.4.0",
+          "git_tag": "ux-design-toolkit/v0.4.0",
+          "source_commit": "ec323e57cd365551b95959dc2c806ad7d5518bc4",
+          "published_at": "2026-10-11T23:23:18Z",
+          "release_url": "https://github.com/JonathanKHobson/working-tools-plugins/releases/tag/ux-design-toolkit/v0.4.0",
+          "channel": "stable",
+          "distribution_status": "available",
+          "summary": "Include complete workbook, prototyping and product-experience methods inside UX Design Studio.",
+          "notes": "Include complete workbook, prototyping and product-experience methods inside UX Design Studio.\n\nThe maintained Studio should include complete reusable methods. Earlier public packaging incorrectly routed ordinary work to separate method installations.\n\nSpreadsheet usability now covers inputs, decisions, invalid states, recovery, accessibility and traceability. Product context, screenshot/URL-informed prototyping, experience design, usability testing and appearance work use included methods. Internal compatibility anchors preserve former routes; no separate method pack is required.\n\nCompatibility: Compatible included-method expansion. Existing plugin and skill identifiers remain. Historical local method anchors resolve internally. Actual application, service and runtime requirements are preserved.\n\nUpgrade: Update the existing Studio or Toolkit package. Use its normal skill entrypoints; no additional writing, UX or prompt method pack is needed.\n\nValidation: Changed skill frontmatter and local reference closure checked. Bounded source-grounded procedure cases run without the redundant method packs; UX instruction-coverage checks are separate from real workbook/browser interaction or participant tests. Exact release archive, installation parity and catalog checks are recorded by the release workflow.\n\nAdditional integration checks: Adds a persistent saved-source helper with safe replacement and recovery, product pain research, matched-density visual comparison, complete mobile-runtime handoff, stable image-concept identities and richer workbook decision states. Corrects the layout-foundations route. Adds an original palette validator, deterministic export and interactive local preview; native application import is unverified because the host does not expose an allowed settings-control route.",
+          "notes_provenance": "github-release:409983707",
+          "assets": [
+            {
+              "role": "file-manifest",
+              "name": "ux-design-toolkit-0.4.0.files.json",
+              "url": "https://github.com/JonathanKHobson/working-tools-plugins/releases/download/ux-design-toolkit/v0.4.0/ux-design-toolkit-0.4.0.files.json",
+              "size": 72401,
+              "sha256": "2c390b5d312564f2565248fcc688aa559bf1610abf4a311ac9b163c35f515296"
+            },
+            {
+              "role": "installation",
+              "name": "ux-design-toolkit-0.4.0.zip",
+              "url": "https://github.com/JonathanKHobson/working-tools-plugins/releases/download/ux-design-toolkit/v0.4.0/ux-design-toolkit-0.4.0.zip",
+              "size": 5940425,
+              "sha256": "2af99c7e8917b4158ea3b55827986fad295cb136c51be68ffab71033d08608f5"
+            },
+            {
+              "role": "checksum",
+              "name": "ux-design-toolkit-0.4.0.zip.sha256",
+              "url": "https://github.com/JonathanKHobson/working-tools-plugins/releases/download/ux-design-toolkit/v0.4.0/ux-design-toolkit-0.4.0.zip.sha256",
+              "size": 94,
+              "sha256": "4f1650711f9377a67d013e0017976177be685a43ce96cecd2407e310a09adc5a"
+            }
+          ],
+          "compatibility": "Compatible included-method expansion. Existing plugin and skill identifiers remain. Historical local method anchors resolve internally. Actual application, service and runtime requirements are preserved.",
+          "upgrade_guidance": "Update the existing Studio or Toolkit package. Use its normal skill entrypoints; no additional writing, UX or prompt method pack is needed.",
+          "verification": {
+            "archive_verified": true,
+            "layout_verified": true
+          }
+        },
         {
           "release_key": "ux-design-toolkit/v0.3.9",
           "product_id": "ux-design-toolkit",
@@ -5245,16 +5847,59 @@
           }
         }
       ],
-      "current_release_key": "ux-design-toolkit/v0.3.9"
+      "current_release_key": "ux-design-toolkit/v0.4.0"
     },
     {
       "id": "research-methodology-local",
       "name": "Research Toolkit",
       "kind": "plugin",
       "repository": "https://github.com/JonathanKHobson/working-tools-plugins",
-      "compatibility": "Your research question and authorized source material; Optional Python 3 for bundled compiler and Research Compass launcher; Optional Research Compass backend with recipient-owned private binding; Optional publisher-installed AIHumanizer, Research Writing Guardrails and UI UX Designer skills for named provider procedures; Reasoning Toolkit for Critical Compass audits",
+      "compatibility": "Your research question and authorized source material; Optional Python 3 for bundled compiler and Research Compass launcher; Optional Research Compass backend with recipient-owned private binding; Reasoning Toolkit for Critical Compass audits",
       "upgrade_guidance": "Choose this exact version from the marketplace or replace the prior plugin directory with its ZIP. Review the release notes and package README.",
       "releases": [
+        {
+          "release_key": "research-methodology-local/v1.2.0",
+          "product_id": "research-methodology-local",
+          "version": "1.2.0",
+          "git_tag": "research-methodology-local/v1.2.0",
+          "source_commit": "ec323e57cd365551b95959dc2c806ad7d5518bc4",
+          "published_at": "2026-10-11T23:22:33Z",
+          "release_url": "https://github.com/JonathanKHobson/working-tools-plugins/releases/tag/research-methodology-local/v1.2.0",
+          "channel": "stable",
+          "distribution_status": "available",
+          "summary": "Keep academic writing and study methods inside Research Toolkit.",
+          "notes": "Keep academic writing and study methods inside Research Toolkit.\n\nThe maintained Studio should include complete reusable methods. Earlier public packaging incorrectly routed ordinary work to separate method installations.\n\nAcademic evidence, claim, style and study workflows use included methods. Persona and journey methods produce complete evidence-grounded textual artifacts within Research; UX remains an optional visual production partner.\n\nCompatibility: Compatible included-method expansion. Existing plugin and skill identifiers remain. Historical local method anchors resolve internally. Actual application, service and runtime requirements are preserved.\n\nUpgrade: Update the existing Studio or Toolkit package. Use its normal skill entrypoints; no additional writing, UX or prompt method pack is needed.\n\nValidation: Changed skill frontmatter and local reference closure checked. Bounded source-grounded procedure cases run without the redundant method packs; UX instruction-coverage checks are separate from real workbook/browser interaction or participant tests. Exact release archive, installation parity and catalog checks are recorded by the release workflow.\n\nAdditional integration checks: Adds complete evidence-grounded task profiles, empathy maps and journey slices inside Research, including sparse sources, countercases and a worked example. Mechanism review identifies the changed system element and separates joint changes from causal evidence.\n\nCross-Studio review: Corrects the worked research example to distinguish observed user uncertainty from an uninspected interface cause.",
+          "notes_provenance": "github-release:409983444",
+          "assets": [
+            {
+              "role": "file-manifest",
+              "name": "research-methodology-local-1.2.0.files.json",
+              "url": "https://github.com/JonathanKHobson/working-tools-plugins/releases/download/research-methodology-local/v1.2.0/research-methodology-local-1.2.0.files.json",
+              "size": 12463,
+              "sha256": "9098c0d2cb64c9974312e7ce6443ba6c1ac1b5c4355a6599a3db516807071097"
+            },
+            {
+              "role": "installation",
+              "name": "research-methodology-local-1.2.0.zip",
+              "url": "https://github.com/JonathanKHobson/working-tools-plugins/releases/download/research-methodology-local/v1.2.0/research-methodology-local-1.2.0.zip",
+              "size": 3266586,
+              "sha256": "d8b19d84a017cec74be4ef38e0e7da3164d74ccb26dfd0e6c6ae1fc4f7d485d1"
+            },
+            {
+              "role": "checksum",
+              "name": "research-methodology-local-1.2.0.zip.sha256",
+              "url": "https://github.com/JonathanKHobson/working-tools-plugins/releases/download/research-methodology-local/v1.2.0/research-methodology-local-1.2.0.zip.sha256",
+              "size": 103,
+              "sha256": "78ca6bb915a622d12988e2487816aa0ecc66af14f1f74182e16e63d9a7635bb9"
+            }
+          ],
+          "compatibility": "Compatible included-method expansion. Existing plugin and skill identifiers remain. Historical local method anchors resolve internally. Actual application, service and runtime requirements are preserved.",
+          "upgrade_guidance": "Update the existing Studio or Toolkit package. Use its normal skill entrypoints; no additional writing, UX or prompt method pack is needed.",
+          "verification": {
+            "archive_verified": true,
+            "layout_verified": true
+          }
+        },
         {
           "release_key": "research-methodology-local/v1.1.1+ecosystem.20261010",
           "product_id": "research-methodology-local",
@@ -5313,7 +5958,7 @@
           }
         }
       ],
-      "current_release_key": "research-methodology-local/v1.1.1+ecosystem.20261010"
+      "current_release_key": "research-methodology-local/v1.2.0"
     },
     {
       "id": "critical-compass-plugin",
