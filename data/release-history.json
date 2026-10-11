@@ -7903,7 +7903,6 @@
           ],
           "bundle_members": [],
           "gaps": [
-            "Page names categories but exact archive membership has not been checked; no component IDs inferred.",
             "Public mirror blob and public download SHA256 match; original authoring-source lineage is unverified."
           ],
           "page_url": "https://jonathankhobson.github.io/shareables/s/humanizer-writing-enhancement/"
