@@ -1,7 +1,7 @@
 {
   "schema_version": "working-tools.plugins.v1",
   "source_repository": "https://github.com/JonathanKHobson/working-tools-plugins.git",
-  "source_revision": "539ca21fffd3a38327b590184c0eeeae35ba1fc3",
+  "source_revision": "c58bcb8152b9fa2976573e08117da69ef288f987",
   "packages": [
     {
       "id": "stitch-design-studio",
@@ -30,7 +30,7 @@
         "design",
         "build"
       ],
-      "source_revision": "539ca21fffd3a38327b590184c0eeeae35ba1fc3",
+      "source_revision": "c58bcb8152b9fa2976573e08117da69ef288f987",
       "release_url": "https://github.com/JonathanKHobson/working-tools-plugins/releases/tag/stitch-design-studio/v0.1.3"
     },
     {
@@ -53,7 +53,7 @@
         "design",
         "teach"
       ],
-      "source_revision": "539ca21fffd3a38327b590184c0eeeae35ba1fc3",
+      "source_revision": "c58bcb8152b9fa2976573e08117da69ef288f987",
       "release_url": "https://github.com/JonathanKHobson/working-tools-plugins/releases/tag/davinci-resolve-toolkit/v0.1.4"
     },
     {
@@ -76,7 +76,7 @@
         "design",
         "build"
       ],
-      "source_revision": "539ca21fffd3a38327b590184c0eeeae35ba1fc3",
+      "source_revision": "c58bcb8152b9fa2976573e08117da69ef288f987",
       "release_url": "https://github.com/JonathanKHobson/working-tools-plugins/releases/tag/artcraft-design-toolkit/v0.2.3"
     },
     {
@@ -104,7 +104,7 @@
         "design",
         "build"
       ],
-      "source_revision": "539ca21fffd3a38327b590184c0eeeae35ba1fc3",
+      "source_revision": "c58bcb8152b9fa2976573e08117da69ef288f987",
       "release_url": "https://github.com/JonathanKHobson/working-tools-plugins/releases/tag/figma-design-workflow/v0.2.3"
     },
     {
@@ -147,7 +147,7 @@
         "design",
         "teach"
       ],
-      "source_revision": "539ca21fffd3a38327b590184c0eeeae35ba1fc3",
+      "source_revision": "c58bcb8152b9fa2976573e08117da69ef288f987",
       "release_url": "https://github.com/JonathanKHobson/working-tools-plugins/releases/tag/video-production-workflow/v0.4.3"
     },
     {
@@ -180,7 +180,7 @@
         "teach",
         "research"
       ],
-      "source_revision": "539ca21fffd3a38327b590184c0eeeae35ba1fc3",
+      "source_revision": "c58bcb8152b9fa2976573e08117da69ef288f987",
       "release_url": "https://github.com/JonathanKHobson/working-tools-plugins/releases/tag/instructional-design-studio/v0.2.2"
     },
     {
@@ -209,7 +209,7 @@
         "teach",
         "research"
       ],
-      "source_revision": "539ca21fffd3a38327b590184c0eeeae35ba1fc3",
+      "source_revision": "c58bcb8152b9fa2976573e08117da69ef288f987",
       "release_url": "https://github.com/JonathanKHobson/working-tools-plugins/releases/tag/workshop-facilitator/v0.1.3"
     },
     {
@@ -256,7 +256,7 @@
         "table",
         "build"
       ],
-      "source_revision": "539ca21fffd3a38327b590184c0eeeae35ba1fc3",
+      "source_revision": "c58bcb8152b9fa2976573e08117da69ef288f987",
       "release_url": "https://github.com/JonathanKHobson/working-tools-plugins/releases/tag/game-creation-studio/v0.3.2"
     },
     {
@@ -286,7 +286,7 @@
         "career",
         "build"
       ],
-      "source_revision": "539ca21fffd3a38327b590184c0eeeae35ba1fc3",
+      "source_revision": "c58bcb8152b9fa2976573e08117da69ef288f987",
       "release_url": "https://github.com/JonathanKHobson/working-tools-plugins/releases/tag/solo-service-operations/v0.3.2"
     },
     {
@@ -309,7 +309,7 @@
       "jobs": [
         "build"
       ],
-      "source_revision": "539ca21fffd3a38327b590184c0eeeae35ba1fc3",
+      "source_revision": "c58bcb8152b9fa2976573e08117da69ef288f987",
       "release_url": "https://github.com/JonathanKHobson/working-tools-plugins/releases/tag/build-mcp-apps/v1.0.5"
     },
     {
@@ -351,7 +351,7 @@
       "jobs": [
         "build"
       ],
-      "source_revision": "539ca21fffd3a38327b590184c0eeeae35ba1fc3",
+      "source_revision": "c58bcb8152b9fa2976573e08117da69ef288f987",
       "release_url": "https://github.com/JonathanKHobson/working-tools-plugins/releases/tag/development-studio/v0.2.3"
     },
     {
@@ -375,7 +375,7 @@
         "design",
         "teach"
       ],
-      "source_revision": "539ca21fffd3a38327b590184c0eeeae35ba1fc3",
+      "source_revision": "c58bcb8152b9fa2976573e08117da69ef288f987",
       "release_url": "https://github.com/JonathanKHobson/working-tools-plugins/releases/tag/video-templates/v0.1.3"
     },
     {
@@ -411,7 +411,7 @@
         "design",
         "build"
       ],
-      "source_revision": "539ca21fffd3a38327b590184c0eeeae35ba1fc3",
+      "source_revision": "c58bcb8152b9fa2976573e08117da69ef288f987",
       "release_url": "https://github.com/JonathanKHobson/working-tools-plugins/releases/tag/data-visualization-toolkit/v0.2.5"
     },
     {
@@ -434,7 +434,7 @@
         "teach",
         "research"
       ],
-      "source_revision": "539ca21fffd3a38327b590184c0eeeae35ba1fc3",
+      "source_revision": "c58bcb8152b9fa2976573e08117da69ef288f987",
       "release_url": "https://github.com/JonathanKHobson/working-tools-plugins/releases/tag/activities-templates/v0.1.3"
     },
     {
@@ -457,7 +457,7 @@
         "design",
         "build"
       ],
-      "source_revision": "539ca21fffd3a38327b590184c0eeeae35ba1fc3",
+      "source_revision": "c58bcb8152b9fa2976573e08117da69ef288f987",
       "release_url": "https://github.com/JonathanKHobson/working-tools-plugins/releases/tag/design-templates/v0.1.6"
     },
     {
@@ -484,7 +484,7 @@
         "research",
         "build"
       ],
-      "source_revision": "539ca21fffd3a38327b590184c0eeeae35ba1fc3",
+      "source_revision": "c58bcb8152b9fa2976573e08117da69ef288f987",
       "release_url": "https://github.com/JonathanKHobson/working-tools-plugins/releases/tag/reasoning-studio/v0.2.3"
     },
     {
@@ -514,7 +514,7 @@
         "research",
         "teach"
       ],
-      "source_revision": "539ca21fffd3a38327b590184c0eeeae35ba1fc3",
+      "source_revision": "c58bcb8152b9fa2976573e08117da69ef288f987",
       "release_url": "https://github.com/JonathanKHobson/working-tools-plugins/releases/tag/survey-studio/v0.1.4"
     },
     {
@@ -545,7 +545,7 @@
       "jobs": [
         "build"
       ],
-      "source_revision": "539ca21fffd3a38327b590184c0eeeae35ba1fc3",
+      "source_revision": "c58bcb8152b9fa2976573e08117da69ef288f987",
       "release_url": "https://github.com/JonathanKHobson/working-tools-plugins/releases/tag/mac-ops-toolkit/v0.3.3"
     },
     {
@@ -582,7 +582,7 @@
         "career",
         "research"
       ],
-      "source_revision": "539ca21fffd3a38327b590184c0eeeae35ba1fc3",
+      "source_revision": "c58bcb8152b9fa2976573e08117da69ef288f987",
       "release_url": "https://github.com/JonathanKHobson/working-tools-plugins/releases/tag/work-management/v0.4.0"
     },
     {
@@ -617,7 +617,7 @@
         "design",
         "build"
       ],
-      "source_revision": "539ca21fffd3a38327b590184c0eeeae35ba1fc3",
+      "source_revision": "c58bcb8152b9fa2976573e08117da69ef288f987",
       "release_url": "https://github.com/JonathanKHobson/working-tools-plugins/releases/tag/graphic-design-studio/v0.3.2"
     },
     {
@@ -640,7 +640,7 @@
         "design",
         "build"
       ],
-      "source_revision": "539ca21fffd3a38327b590184c0eeeae35ba1fc3",
+      "source_revision": "c58bcb8152b9fa2976573e08117da69ef288f987",
       "release_url": "https://github.com/JonathanKHobson/working-tools-plugins/releases/tag/brand-templates/v0.1.4"
     },
     {
@@ -663,7 +663,7 @@
         "write",
         "teach"
       ],
-      "source_revision": "539ca21fffd3a38327b590184c0eeeae35ba1fc3",
+      "source_revision": "c58bcb8152b9fa2976573e08117da69ef288f987",
       "release_url": "https://github.com/JonathanKHobson/working-tools-plugins/releases/tag/writing-templates/v0.1.4"
     },
     {
@@ -693,7 +693,7 @@
       "jobs": [
         "write"
       ],
-      "source_revision": "539ca21fffd3a38327b590184c0eeeae35ba1fc3",
+      "source_revision": "c58bcb8152b9fa2976573e08117da69ef288f987",
       "release_url": "https://github.com/JonathanKHobson/working-tools-plugins/releases/tag/social-content-studio/v0.2.3"
     },
     {
@@ -725,7 +725,7 @@
         "write",
         "table"
       ],
-      "source_revision": "539ca21fffd3a38327b590184c0eeeae35ba1fc3",
+      "source_revision": "c58bcb8152b9fa2976573e08117da69ef288f987",
       "release_url": "https://github.com/JonathanKHobson/working-tools-plugins/releases/tag/creative-writing-studio/v0.3.4"
     },
     {
@@ -758,7 +758,7 @@
       "jobs": [
         "build"
       ],
-      "source_revision": "539ca21fffd3a38327b590184c0eeeae35ba1fc3",
+      "source_revision": "c58bcb8152b9fa2976573e08117da69ef288f987",
       "release_url": "https://github.com/JonathanKHobson/working-tools-plugins/releases/tag/master-security-toolkit/v0.2.3"
     },
     {
@@ -791,7 +791,7 @@
         "write",
         "build"
       ],
-      "source_revision": "539ca21fffd3a38327b590184c0eeeae35ba1fc3",
+      "source_revision": "c58bcb8152b9fa2976573e08117da69ef288f987",
       "release_url": "https://github.com/JonathanKHobson/working-tools-plugins/releases/tag/prompt-playbook-studio/v0.2.2"
     },
     {
@@ -827,7 +827,7 @@
         "write",
         "build"
       ],
-      "source_revision": "539ca21fffd3a38327b590184c0eeeae35ba1fc3",
+      "source_revision": "c58bcb8152b9fa2976573e08117da69ef288f987",
       "release_url": "https://github.com/JonathanKHobson/working-tools-plugins/releases/tag/career-studio/v0.2.1"
     },
     {
@@ -861,7 +861,7 @@
         "write",
         "design"
       ],
-      "source_revision": "539ca21fffd3a38327b590184c0eeeae35ba1fc3",
+      "source_revision": "c58bcb8152b9fa2976573e08117da69ef288f987",
       "release_url": "https://github.com/JonathanKHobson/working-tools-plugins/releases/tag/marketing-strategy-studio/v0.3.1"
     },
     {
@@ -896,7 +896,7 @@
         "write",
         "career"
       ],
-      "source_revision": "539ca21fffd3a38327b590184c0eeeae35ba1fc3",
+      "source_revision": "c58bcb8152b9fa2976573e08117da69ef288f987",
       "release_url": "https://github.com/JonathanKHobson/working-tools-plugins/releases/tag/writing-quality-studio/v0.3.6"
     },
     {
@@ -934,7 +934,7 @@
         "design",
         "build"
       ],
-      "source_revision": "539ca21fffd3a38327b590184c0eeeae35ba1fc3",
+      "source_revision": "c58bcb8152b9fa2976573e08117da69ef288f987",
       "release_url": "https://github.com/JonathanKHobson/working-tools-plugins/releases/tag/ux-design-toolkit/v0.3.9"
     },
     {
@@ -968,7 +968,7 @@
         "research",
         "write"
       ],
-      "source_revision": "539ca21fffd3a38327b590184c0eeeae35ba1fc3",
+      "source_revision": "c58bcb8152b9fa2976573e08117da69ef288f987",
       "release_url": "https://github.com/JonathanKHobson/working-tools-plugins/releases/tag/research-methodology-local/v1.1.1%2Becosystem.20261010"
     }
   ]
