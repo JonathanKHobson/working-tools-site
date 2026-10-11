@@ -136,6 +136,7 @@ a { text-underline-offset: 0.18em; }
 .release-members li + li { margin-top: 0.4rem; }
 .release-asset-name { font-weight: 800; overflow-wrap: anywhere; }
 .release-assets code { color: var(--muted); overflow-wrap: anywhere; font-size: 0.8rem; }
+.release-muted code { overflow-wrap: anywhere; }
 .release-footer {
   display: flex;
   flex-wrap: wrap;
