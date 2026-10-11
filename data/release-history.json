@@ -290,6 +290,49 @@
       "upgrade_guidance": "Choose this exact version from the marketplace or replace the prior plugin directory with its ZIP. Review the release notes and package README.",
       "releases": [
         {
+          "release_key": "artcraft-design-toolkit/v0.3.0",
+          "product_id": "artcraft-design-toolkit",
+          "version": "0.3.0",
+          "git_tag": "artcraft-design-toolkit/v0.3.0",
+          "source_commit": "af778ad3253756969d9ba2be76fef38a6599af02",
+          "published_at": "2026-10-11T17:46:08Z",
+          "release_url": "https://github.com/JonathanKHobson/working-tools-plugins/releases/tag/artcraft-design-toolkit/v0.3.0",
+          "channel": "stable",
+          "distribution_status": "available",
+          "summary": "Add WordCraft, SoundCraft and CADCraft through the existing on-demand ArtCraft gateway.",
+          "notes": "Add WordCraft, SoundCraft and CADCraft through the existing on-demand ArtCraft gateway.\n\nDocument, audio-session and CAD work can now use the same selected-app workflow as the existing seven ArtCraft apps, without adding separate always-running MCP servers.\n\n- Adds three app selections, allowlisted CLI commands and headless native MCP routes.\n- Documents each app's live desktop bridge, with optional WordCraft author and SoundCraft demo settings.\n- Keeps CADCraft configuration under the selected project and expands installation, storage and app-selection guidance.\n- Preserves the existing artcraft-toolkit identity, portable/Codex/Claude registration formats and one active native session.\n- Includes updated first-party source, tests, provenance and license-scope hashes; provider binaries and machine-specific receipts remain outside this package.\n\nLimits: the live desktop-editing bridges were documented and unit-tested, not exercised as live editing workflows. WordCraft is alpha and real-world DOCX round-trip fidelity remains untested. SoundCraft and CADCraft are pre-alpha; lossless DWG round trips are not guaranteed. Use copies and inspect saved/exported results.\n\nCompatibility: Compatible additions to ArtCraft Design Toolkit 0.2.3. Existing gateway tool names, app selections and installation layout remain supported. Python and separately installed matching ArtCraft desktop/CLI binaries are still required; this package does not install provider apps.\n\nUpgrade: Update the existing plugin through its marketplace or replace its directory with the exact 0.3.0 ZIP. Install only the separately supplied ArtCraft apps/CLIs needed for your work, using matching releases and the existing ARTCRAFT_HOME or host configuration. Start with installed_status, then one selected app and a disposable project.\n\nValidation: All 26 canonical files matched the maintained native 0.3.0 installation before release preparation. The three gateway tests passed, including new-route arguments and child cleanup. The installation handoff records real native initialization, discovery and read calls for SoundCraft (17 tools), CADCraft (11), WordCraft (16) and PdfCraft (17 compact), plus desktop launch/quit and official-release digest/signature checks. These are bounded Mac checks, not document-fidelity or all-provider workflow guarantees. The release workflow additionally verifies exact-commit package contents and downloaded bytes before publication.",
+          "notes_provenance": "github-release:409823106",
+          "assets": [
+            {
+              "role": "file-manifest",
+              "name": "artcraft-design-toolkit-0.3.0.files.json",
+              "url": "https://github.com/JonathanKHobson/working-tools-plugins/releases/download/artcraft-design-toolkit/v0.3.0/artcraft-design-toolkit-0.3.0.files.json",
+              "size": 2528,
+              "sha256": "f254487d4fb4ea9c818aa78015a28f32a09f146734e24bcf9153b3efa3ac2af1"
+            },
+            {
+              "role": "installation",
+              "name": "artcraft-design-toolkit-0.3.0.zip",
+              "url": "https://github.com/JonathanKHobson/working-tools-plugins/releases/download/artcraft-design-toolkit/v0.3.0/artcraft-design-toolkit-0.3.0.zip",
+              "size": 53692,
+              "sha256": "eb8c09f3b973cbfe31fb355704549c34d920a230316a9c258061fa57913eee0a"
+            },
+            {
+              "role": "checksum",
+              "name": "artcraft-design-toolkit-0.3.0.zip.sha256",
+              "url": "https://github.com/JonathanKHobson/working-tools-plugins/releases/download/artcraft-design-toolkit/v0.3.0/artcraft-design-toolkit-0.3.0.zip.sha256",
+              "size": 100,
+              "sha256": "c0fe454b7219643d20285cf420b1a99adca524cfcced2012c2485cf41f4edcd0"
+            }
+          ],
+          "compatibility": "Compatible additions to ArtCraft Design Toolkit 0.2.3. Existing gateway tool names, app selections and installation layout remain supported. Python and separately installed matching ArtCraft desktop/CLI binaries are still required; this package does not install provider apps.",
+          "upgrade_guidance": "Update the existing plugin through its marketplace or replace its directory with the exact 0.3.0 ZIP. Install only the separately supplied ArtCraft apps/CLIs needed for your work, using matching releases and the existing ARTCRAFT_HOME or host configuration. Start with installed_status, then one selected app and a disposable project.",
+          "verification": {
+            "archive_verified": true,
+            "layout_verified": true
+          }
+        },
+        {
           "release_key": "artcraft-design-toolkit/v0.2.3",
           "product_id": "artcraft-design-toolkit",
           "version": "0.2.3",
@@ -419,7 +462,7 @@
           }
         }
       ],
-      "current_release_key": "artcraft-design-toolkit/v0.2.3"
+      "current_release_key": "artcraft-design-toolkit/v0.3.0"
     },
     {
       "id": "figma-design-workflow",
