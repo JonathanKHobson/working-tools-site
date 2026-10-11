@@ -11,6 +11,20 @@ const JOB_LABELS = {
 
 const HIDDEN_PERSONAL_OR_PRIVATE_PACKAGES = new Set(["discord", "oppia-research-compass"]);
 
+function installationAsset(release) {
+  if (!release || release.distribution_status !== "available" || !["stable", "release"].includes(release.channel)) return null;
+  return release.assets?.find((asset) => asset.role === "installation" && asset.url?.startsWith("https://")) || null;
+}
+
+function currentRelease(product) {
+  return product?.releases?.find((release) => release.release_key === product.current_release_key) || null;
+}
+
+function releaseDate(value) {
+  const date = new Date(value);
+  return Number.isNaN(date.getTime()) ? "" : new Intl.DateTimeFormat("en", {year: "numeric", month: "short", day: "numeric", timeZone: "UTC"}).format(date);
+}
+
 function element(tag, className, text) {
   const node = document.createElement(tag);
   if (className) node.className = className;
@@ -134,13 +148,25 @@ function createRow(item, accessLabels) {
 
   const main = element("div", "library-main");
   main.append(element("h3", "", item.name));
+  if (item.currentRelease) {
+    const published = releaseDate(item.currentRelease.published_at);
+    main.append(element("p", "library-release-meta", `Current v${item.currentRelease.version}${published ? ` · ${published}` : ""}`));
+  }
   if (item.storefront_tagline || item.tagline) main.append(element("p", "library-tagline", item.storefront_tagline || item.tagline));
   main.append(element("p", "library-description", item.storefront_description || item.description));
   const side = element("div", "library-side");
-  if ((item.release_url || item.href) && item.action) {
-    const link = element("a", "button button-primary", item.action);
-    link.href = item.release_url || item.href;
+  const exactDownload = installationAsset(item.currentRelease);
+  if (exactDownload || ((item.release_url || item.href) && item.action)) {
+    const action = exactDownload ? `Download v${item.currentRelease.version} ZIP` : item.action;
+    const link = element("a", "button button-primary", action);
+    link.href = exactDownload?.url || item.release_url || item.href;
     side.append(link);
+  }
+  if (item.historyProduct) {
+    const count = item.historyProduct.releases.length;
+    const history = element("a", "library-history-link", `Details and all ${count} ${count === 1 ? "release" : "releases"}`);
+    history.href = `plugins/${encodeURIComponent(item.id)}/`;
+    side.append(history);
   }
 
   if (item.description || item.requirements?.length || item.edition || item.license) side.append(createPackageDetails(item));
@@ -189,16 +215,30 @@ export async function startCatalog() {
   });
 
   try {
-    const [libraryResponse, pluginResponse] = await Promise.all([
+    const [libraryResponse, pluginResponse, historyResponse] = await Promise.all([
       fetch("data/tool-library.json?v=phase3-ux8"),
-      fetch("data/plugin-releases.json?v=phase3-ux8")
+      fetch("data/plugin-releases.json?v=phase3-ux8"),
+      fetch("data/release-history.json?v=phase3-release-history-1")
     ]);
     if (!libraryResponse.ok || !pluginResponse.ok) throw new Error("Catalog source unavailable");
     const library = await libraryResponse.json();
     const releases = await pluginResponse.json();
+    let releaseHistory = {products: []};
+    if (historyResponse.ok) {
+      const candidate = await historyResponse.json();
+      if (candidate.schema_version === "working-tools.releases.v1" && Array.isArray(candidate.products)) releaseHistory = candidate;
+    }
+    if (!releaseHistory.products.length) {
+      error.textContent = "Release history is temporarily unavailable. Current GitHub release links still work.";
+      error.hidden = false;
+    }
+    const historyById = new Map(releaseHistory.products.map((product) => [product.id, product]));
     const plugins = releases.packages
       .filter((p) => !HIDDEN_PERSONAL_OR_PRIVATE_PACKAGES.has(p.id))
-      .map((p) => ({...p, kind: "Installable plugin", access: "public-download", href: `https://github.com/JonathanKHobson/working-tools-plugins/tree/main/plugins/${p.id}`, action: "Get this plugin", skills: p.skill_names, status: "Released"}));
+      .map((p) => {
+        const historyProduct = historyById.get(p.id);
+        return {...p, kind: "Installable plugin", access: "public-download", href: `https://github.com/JonathanKHobson/working-tools-plugins/tree/main/plugins/${p.id}`, action: "Open current release", skills: p.skill_names, status: "Released", historyProduct, currentRelease: currentRelease(historyProduct)};
+      });
     const currentResources = library.items.filter((item) => ["participatory-defense-field-guide", "understanding-ai-2026", "mcp-basics"].includes(item.id));
     const items = [...plugins, ...currentResources];
 

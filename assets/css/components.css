@@ -429,6 +429,22 @@
   line-height: 1.45;
 }
 
+.library-release-meta {
+  margin-bottom: 0.5rem;
+  color: var(--signal-dark);
+  font-family: var(--mono);
+  font-size: var(--step--1);
+  font-weight: 700;
+}
+
+.library-history-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  font-weight: 750;
+  text-underline-offset: 0.18em;
+}
+
 .library-description {
   max-width: 54rem;
   margin-bottom: 0;

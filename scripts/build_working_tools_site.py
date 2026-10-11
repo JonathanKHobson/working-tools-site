@@ -148,6 +148,7 @@ def rewrite(text: str, repo: str, source_path: str, site_origin: str | None) -> 
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--root-revision", help="Exact maintained site commit; overrides the historical root pin for this build")
     parser.add_argument("--site-origin", help="Verified published Site origin for canonical metadata")
     parser.add_argument("--site-project-id", help="Returned Site project ID for build provenance")
     parser.add_argument("--sources-dir", type=Path, help="Directory containing pinned companion Git checkouts by repository name")
@@ -163,6 +164,11 @@ def main() -> None:
     if OUTPUT.exists():
         shutil.rmtree(OUTPUT)
     OUTPUT.mkdir()
+    if args.root_revision:
+        if not re.fullmatch(r"[0-9a-f]{40}", args.root_revision):
+            raise SystemExit("Root revision must be an exact commit SHA")
+        pins["sources"]["compass-suite"]["sha"] = args.root_revision
+        pins["sources"]["compass-suite"]["checkout"] = "."
     copied = []
     excluded = []
     routes = []
