@@ -38,6 +38,9 @@ RUNTIME_SUFFIXES = {
 SOURCE_REPOSITORIES = {"compass-suite": "working-tools-site"}
 DOWNLOAD_SUFFIXES = {".zip", ".skill", ".mcpb", ".pdf", ".md", ".txt"}
 TEXT_SUFFIXES = {".html", ".css", ".js", ".mjs", ".json", ".svg"}
+# Release URLs and verification evidence are signed off as one catalog projection.
+# Rewrite navigation around it, but copy this JSON exactly from the pinned commit.
+IMMUTABLE_PUBLIC_DATA = {"data/release-history.json"}
 IGNORED_PREFIXES = (".git/", ".openai/", "docs/", "scripts/", "content/", "legal/", "snippets/", "output/", "vendor/", "site-sources/")
 EXCLUDED_RUNTIME_FILES = {"404.html"}
 MCP_SITE = "https://what-is-an-mcp.jkylehobson.chatgpt.site/"
@@ -200,7 +203,7 @@ def main() -> None:
                 excluded.append(f"{repo}:{name}")
                 continue
             blob = git(checkout, "show", f"{sha}:{name}")
-            if path.suffix.lower() in TEXT_SUFFIXES:
+            if path.suffix.lower() in TEXT_SUFFIXES and not (repo == "compass-suite" and name in IMMUTABLE_PUBLIC_DATA):
                 blob = rewrite(blob.decode("utf-8"), repo, name, args.site_origin).encode("utf-8")
             relative = destination(repo, name)
             if path.suffix.lower() == ".html" and relative.split("/", 1)[0] in LEGACY_ROUTES:
