@@ -3520,6 +3520,49 @@
       "upgrade_guidance": "Choose this exact version from the marketplace or replace the prior plugin directory with its ZIP. Review the release notes and package README.",
       "releases": [
         {
+          "release_key": "work-management/v0.5.1",
+          "product_id": "work-management",
+          "version": "0.5.1",
+          "git_tag": "work-management/v0.5.1",
+          "source_commit": "de7e1a1437ac9c33a331f9bdccc1cc5af444bcba",
+          "published_at": "2026-10-12T02:38:25Z",
+          "release_url": "https://github.com/JonathanKHobson/working-tools-plugins/releases/tag/work-management/v0.5.1",
+          "channel": "stable",
+          "distribution_status": "available",
+          "summary": "Restore the installed lifecycle hooks for work setup and coordination.",
+          "notes": "Restore the installed lifecycle hooks for work setup and coordination.\n\nThe previous public package layout prevented the supported Codex runtime from discovering the bundled hooks. Hook functionality must remain part of the installed Studio.\n\nRestores four Codex hook registrations and the supported Claude advisory registration. Uses the working host-native manifest layout while retaining portable metadata; fixes the public work-start hook so it can supply the configured goal and conversation-title guidance. Updates installation guidance for native hook trust.\n\nCompatibility: Existing product and skill identifiers are unchanged. Requires a supported host and Python 3. Native hook trust is controlled by the receiving user.\n\nUpgrade: Install this patch of the existing Studio. In Codex, review and trust its listed hooks and refresh the plugin discovery state. Keep project-specific design runtime settings where applicable.\n\nValidation: Manifest layout checked against the installed Codex runtime. Package registration and archive-content checks preserve the bundled definitions and handlers. The repaired local Codex installation reports the seven affected plugin hooks enabled and trusted; this does not claim every end-to-end agent workflow was retested.",
+          "notes_provenance": "github-release:410085641",
+          "assets": [
+            {
+              "role": "file-manifest",
+              "name": "work-management-0.5.1.files.json",
+              "url": "https://github.com/JonathanKHobson/working-tools-plugins/releases/download/work-management/v0.5.1/work-management-0.5.1.files.json",
+              "size": 33246,
+              "sha256": "9ef54a58d20c0d983243480bf99e2c4d1081334704520936c2294a3aaaf44ebe"
+            },
+            {
+              "role": "installation",
+              "name": "work-management-0.5.1.zip",
+              "url": "https://github.com/JonathanKHobson/working-tools-plugins/releases/download/work-management/v0.5.1/work-management-0.5.1.zip",
+              "size": 3597644,
+              "sha256": "b071dd564ecec22326d2bd026b8901b8c8f0fab9cee27194e9190c92658b891e"
+            },
+            {
+              "role": "checksum",
+              "name": "work-management-0.5.1.zip.sha256",
+              "url": "https://github.com/JonathanKHobson/working-tools-plugins/releases/download/work-management/v0.5.1/work-management-0.5.1.zip.sha256",
+              "size": 92,
+              "sha256": "7a1143db510338e7108065e31cd42c67a3da3cf0d6cf84ca4ef41925b4ad9ba6"
+            }
+          ],
+          "compatibility": "Existing product and skill identifiers are unchanged. Requires a supported host and Python 3. Native hook trust is controlled by the receiving user.",
+          "upgrade_guidance": "Install this patch of the existing Studio. In Codex, review and trust its listed hooks and refresh the plugin discovery state. Keep project-specific design runtime settings where applicable.",
+          "verification": {
+            "archive_verified": true,
+            "layout_verified": true
+          }
+        },
+        {
           "release_key": "work-management/v0.5.0",
           "product_id": "work-management",
           "version": "0.5.0",
@@ -3778,7 +3821,7 @@
           }
         }
       ],
-      "current_release_key": "work-management/v0.5.0"
+      "current_release_key": "work-management/v0.5.1"
     },
     {
       "id": "graphic-design-studio",
@@ -5102,6 +5145,49 @@
       "upgrade_guidance": "Choose this exact version from the marketplace or replace the prior plugin directory with its ZIP. Review the release notes and package README.",
       "releases": [
         {
+          "release_key": "prompt-playbook-studio/v0.3.1",
+          "product_id": "prompt-playbook-studio",
+          "version": "0.3.1",
+          "git_tag": "prompt-playbook-studio/v0.3.1",
+          "source_commit": "de7e1a1437ac9c33a331f9bdccc1cc5af444bcba",
+          "published_at": "2026-10-12T02:37:42Z",
+          "release_url": "https://github.com/JonathanKHobson/working-tools-plugins/releases/tag/prompt-playbook-studio/v0.3.1",
+          "channel": "stable",
+          "distribution_status": "available",
+          "summary": "Restore the prompt advisory hook and its installed script path.",
+          "notes": "Restore the prompt advisory hook and its installed script path.\n\nThe previous public package layout prevented the supported Codex runtime from discovering the bundled hooks. Hook functionality must remain part of the installed Studio.\n\nRestores the Codex UserPromptSubmit registration and fixes the command to resolve its script from the installed plugin root. Preserves the Claude registration and quiet behavior for unrelated prompts. Uses the working host-native manifest layout while retaining portable metadata.\n\nCompatibility: Existing product and skill identifiers are unchanged. Requires a supported host and Python 3. Native hook trust is controlled by the receiving user.\n\nUpgrade: Install this patch of the existing Studio. In Codex, review and trust its listed hooks and refresh the plugin discovery state. Keep project-specific design runtime settings where applicable.\n\nValidation: Manifest layout checked against the installed Codex runtime. Package registration and archive-content checks preserve the bundled definitions and handlers. The repaired local Codex installation reports the seven affected plugin hooks enabled and trusted; this does not claim every end-to-end agent workflow was retested.",
+          "notes_provenance": "github-release:410085292",
+          "assets": [
+            {
+              "role": "file-manifest",
+              "name": "prompt-playbook-studio-0.3.1.files.json",
+              "url": "https://github.com/JonathanKHobson/working-tools-plugins/releases/download/prompt-playbook-studio/v0.3.1/prompt-playbook-studio-0.3.1.files.json",
+              "size": 12116,
+              "sha256": "c6d05fa1dd7190ceaa9380bb4b646dd55b2897acc8e0cd5e3626da10dc00ec16"
+            },
+            {
+              "role": "installation",
+              "name": "prompt-playbook-studio-0.3.1.zip",
+              "url": "https://github.com/JonathanKHobson/working-tools-plugins/releases/download/prompt-playbook-studio/v0.3.1/prompt-playbook-studio-0.3.1.zip",
+              "size": 10551584,
+              "sha256": "9408c58784db58138c1e5145c27ae3f9d855c2173d854c2269d8ab33fbdab055"
+            },
+            {
+              "role": "checksum",
+              "name": "prompt-playbook-studio-0.3.1.zip.sha256",
+              "url": "https://github.com/JonathanKHobson/working-tools-plugins/releases/download/prompt-playbook-studio/v0.3.1/prompt-playbook-studio-0.3.1.zip.sha256",
+              "size": 99,
+              "sha256": "0ce9513a0254cc2f5823c1669d1d64220ed21ee522eff860a2175a1fcd761b69"
+            }
+          ],
+          "compatibility": "Existing product and skill identifiers are unchanged. Requires a supported host and Python 3. Native hook trust is controlled by the receiving user.",
+          "upgrade_guidance": "Install this patch of the existing Studio. In Codex, review and trust its listed hooks and refresh the plugin discovery state. Keep project-specific design runtime settings where applicable.",
+          "verification": {
+            "archive_verified": true,
+            "layout_verified": true
+          }
+        },
+        {
           "release_key": "prompt-playbook-studio/v0.3.0",
           "product_id": "prompt-playbook-studio",
           "version": "0.3.0",
@@ -5231,7 +5317,7 @@
           }
         }
       ],
-      "current_release_key": "prompt-playbook-studio/v0.3.0"
+      "current_release_key": "prompt-playbook-studio/v0.3.1"
     },
     {
       "id": "career-studio",
@@ -5676,6 +5762,49 @@
       "upgrade_guidance": "Choose this exact version from the marketplace or replace the prior plugin directory with its ZIP. Review the release notes and package README.",
       "releases": [
         {
+          "release_key": "ux-design-toolkit/v0.4.1",
+          "product_id": "ux-design-toolkit",
+          "version": "0.4.1",
+          "git_tag": "ux-design-toolkit/v0.4.1",
+          "source_commit": "de7e1a1437ac9c33a331f9bdccc1cc5af444bcba",
+          "published_at": "2026-10-12T02:38:04Z",
+          "release_url": "https://github.com/JonathanKHobson/working-tools-plugins/releases/tag/ux-design-toolkit/v0.4.1",
+          "channel": "stable",
+          "distribution_status": "available",
+          "summary": "Restore the design review lifecycle hooks in the installable package.",
+          "notes": "Restore the design review lifecycle hooks in the installable package.\n\nThe previous public package layout prevented the supported Codex runtime from discovering the bundled hooks. Hook functionality must remain part of the installed Studio.\n\nRestores Codex and Claude registrations for the existing PostToolUse and Stop design-runtime hooks. Preserves the project opt-in, scoped advisory behavior and existing handlers. Uses the working host-native manifest layout while retaining portable metadata.\n\nCompatibility: Existing product and skill identifiers are unchanged. Requires a supported host and Python 3. Native hook trust is controlled by the receiving user.\n\nUpgrade: Install this patch of the existing Studio. In Codex, review and trust its listed hooks and refresh the plugin discovery state. Keep project-specific design runtime settings where applicable.\n\nValidation: Manifest layout checked against the installed Codex runtime. Package registration and archive-content checks preserve the bundled definitions and handlers. The repaired local Codex installation reports the seven affected plugin hooks enabled and trusted; this does not claim every end-to-end agent workflow was retested.",
+          "notes_provenance": "github-release:410085497",
+          "assets": [
+            {
+              "role": "file-manifest",
+              "name": "ux-design-toolkit-0.4.1.files.json",
+              "url": "https://github.com/JonathanKHobson/working-tools-plugins/releases/download/ux-design-toolkit/v0.4.1/ux-design-toolkit-0.4.1.files.json",
+              "size": 72410,
+              "sha256": "4ad2f61747aff109e3614e49ee266e9b5e2954193d7874455a7049e7c10018ad"
+            },
+            {
+              "role": "installation",
+              "name": "ux-design-toolkit-0.4.1.zip",
+              "url": "https://github.com/JonathanKHobson/working-tools-plugins/releases/download/ux-design-toolkit/v0.4.1/ux-design-toolkit-0.4.1.zip",
+              "size": 5940934,
+              "sha256": "8699ba93015a3c2d7afae3190d8baa307011fefc68ed7d878a4bd21738157933"
+            },
+            {
+              "role": "checksum",
+              "name": "ux-design-toolkit-0.4.1.zip.sha256",
+              "url": "https://github.com/JonathanKHobson/working-tools-plugins/releases/download/ux-design-toolkit/v0.4.1/ux-design-toolkit-0.4.1.zip.sha256",
+              "size": 94,
+              "sha256": "aab7d582698ad98f3c942f9b528d47ab4769b1ebd2f7f8f209ed3227f574beb8"
+            }
+          ],
+          "compatibility": "Existing product and skill identifiers are unchanged. Requires a supported host and Python 3. Native hook trust is controlled by the receiving user.",
+          "upgrade_guidance": "Install this patch of the existing Studio. In Codex, review and trust its listed hooks and refresh the plugin discovery state. Keep project-specific design runtime settings where applicable.",
+          "verification": {
+            "archive_verified": true,
+            "layout_verified": true
+          }
+        },
+        {
           "release_key": "ux-design-toolkit/v0.4.0",
           "product_id": "ux-design-toolkit",
           "version": "0.4.0",
@@ -5847,7 +5976,7 @@
           }
         }
       ],
-      "current_release_key": "ux-design-toolkit/v0.4.0"
+      "current_release_key": "ux-design-toolkit/v0.4.1"
     },
     {
       "id": "research-methodology-local",
